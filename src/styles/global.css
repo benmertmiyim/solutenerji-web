@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Material Icons - tüm sayfalarda kullanılır */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Ana gradient - index, iletisim, 404 */
+.kinetic-monolith-gradient {
+  background: linear-gradient(135deg, #002855 0%, #1d3e6e 100%);
+}
+
+/* Gölge efekti - gunes-enerjisi sayfası */
+.kinetic-monolith-shadow {
+  box-shadow: 0 24px 48px -12px rgba(0, 40, 85, 0.08);
+}
+
+/* Cam efekti - gunes-enerjisi sayfası */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Blur efekti - ev-sarj sayfası */
+.glass-effect {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}

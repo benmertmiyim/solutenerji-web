@@ -1,0 +1,40 @@
+---
+const pathname = Astro.url.pathname;
+
+function isActive(href: string): boolean {
+  if (href === '/') return pathname === '/';
+  return pathname.startsWith(href);
+}
+
+const navLinks = [
+  { href: '/', label: 'Ana Sayfa' },
+  { href: '/gunes-enerjisi/', label: 'Güneş Enerjisi' },
+  { href: '/ev-sarj-ve-danismanlik/', label: 'EV Şarj' },
+  { href: '/ev-sarj-ve-danismanlik/', label: 'Danışmanlık' },
+  { href: '/iletisim/', label: 'İletişim' },
+];
+---
+<nav class="fixed top-0 z-50 w-full border-b border-slate-100 bg-white/80 shadow-sm backdrop-blur-md dark:border-slate-800 dark:bg-slate-950/80 dark:shadow-none">
+  <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
+    <a href="/" aria-label="Solut Enerji" class="flex items-center">
+      <img
+        alt="Solut Enerji Logo"
+        class="h-16 w-auto origin-left scale-[1.5] transform-gpu"
+        src="/assets/logo.svg"
+      >
+    </a>
+    <div class="hidden md:flex items-center font-body text-sm font-semibold tracking-tight">
+      {navLinks.map(link => (
+        <a
+          href={link.href}
+          class={isActive(link.href)
+            ? 'text-blue-900 dark:text-yellow-500 border-b-2 border-yellow-500 pb-1 mx-4'
+            : 'text-slate-600 dark:text-slate-400 hover:text-blue-900 dark:hover:text-white transition-colors mx-4'}
+        >
+          {link.label}
+        </a>
+      ))}
+    </div>
+    <a href="/iletisim/" class="bg-primary text-on-primary px-6 py-2.5 rounded-md font-semibold text-sm hover:opacity-80 transition-all active:scale-95">Teklif Al</a>
+  </div>
+</nav>

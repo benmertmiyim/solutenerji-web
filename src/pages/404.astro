@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Sayfa Bulunamadı | Solut Enerji"
+  description="Aradığınız sayfa bulunamadı. Solut Enerji ana sayfasına dönerek devam edebilirsiniz."
+>
+  <div class="flex min-h-screen items-center justify-center px-6 pt-20">
+    <div class="max-w-lg text-center">
+      <div class="kinetic-monolith-gradient mx-auto mb-8 flex h-24 w-24 items-center justify-center rounded-full">
+        <span class="material-symbols-outlined text-5xl text-secondary-container">error</span>
+      </div>
+      <h1 class="mb-4 font-headline text-6xl font-black text-primary">404</h1>
+      <h2 class="mb-4 font-headline text-2xl font-bold text-primary">Sayfa Bulunamadı</h2>
+      <p class="mb-10 text-lg leading-relaxed text-on-surface-variant">
+        Aradığınız sayfa taşınmış veya kaldırılmış olabilir. Ana sayfaya dönerek devam edebilirsiniz.
+      </p>
+      <div class="flex flex-col justify-center gap-4 sm:flex-row">
+        <a
+          href="/"
+          class="flex items-center justify-center gap-2 rounded-md bg-primary px-8 py-4 font-bold text-on-primary transition-all hover:opacity-80"
+        >
+          <span class="material-symbols-outlined">home</span>
+          <span>Ana Sayfaya Dön</span>
+        </a>
+        <a
+          href="/iletisim/"
+          class="rounded-md bg-secondary-container px-8 py-4 font-bold text-on-secondary-fixed transition-all hover:opacity-90"
+        >
+          Bize Ulaşın
+        </a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
