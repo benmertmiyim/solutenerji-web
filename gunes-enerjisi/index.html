@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+
+<html class="light" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mesken Çatı GES Kurulumu | Solut Enerji</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary-container": "#feb31b",
+              "on-secondary-fixed": "#281800",
+              "on-primary-fixed": "#001b3e",
+              "error-container": "#ffdad6",
+              "surface-container-lowest": "#ffffff",
+              "primary-container": "#1d3e6e",
+              "surface-bright": "#f8f9fa",
+              "primary": "#002855",
+              "secondary": "#7f5600",
+              "on-error-container": "#93000a",
+              "primary-fixed-dim": "#aac7ff",
+              "tertiary-fixed": "#e2e2e2",
+              "surface-container-highest": "#e1e3e4",
+              "surface-container-low": "#f3f4f5",
+              "surface-container": "#edeeef",
+              "tertiary-fixed-dim": "#c6c6c6",
+              "tertiary": "#272829",
+              "on-secondary-fixed-variant": "#604100",
+              "outline": "#747780",
+              "surface-tint": "#405f91",
+              "on-primary": "#ffffff",
+              "outline-variant": "#c4c6d0",
+              "on-background": "#191c1d",
+              "on-surface": "#191c1d",
+              "inverse-primary": "#aac7ff",
+              "secondary-fixed": "#ffdeae",
+              "on-tertiary-fixed": "#1a1c1c",
+              "on-primary-container": "#8caae1",
+              "surface-dim": "#d9dadb",
+              "tertiary-container": "#3d3e3f",
+              "surface": "#f8f9fa",
+              "on-tertiary": "#ffffff",
+              "inverse-on-surface": "#f0f1f2",
+              "on-secondary": "#ffffff",
+              "on-tertiary-container": "#a8a9a9",
+              "primary-fixed": "#d6e3ff",
+              "secondary-fixed-dim": "#ffba3f",
+              "background": "#f8f9fa",
+              "on-error": "#ffffff",
+              "on-surface-variant": "#43474f",
+              "on-tertiary-fixed-variant": "#454747",
+              "on-secondary-container": "#6b4800",
+              "surface-container-high": "#e7e8e9",
+              "on-primary-fixed-variant": "#274777",
+              "error": "#ba1a1a",
+              "surface-variant": "#e1e3e4",
+              "inverse-surface": "#2e3132"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .kinetic-monolith-shadow {
+            box-shadow: 0 24px 48px -12px rgba(0, 40, 85, 0.08);
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body">
+<!-- Top Navigation -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
+<a href="/" class="flex items-center gap-2">
+<img alt="Solut Enerji Logo" class="h-8 w-auto" src="/assets/logo.png">
+<span class="text-xl font-bold tracking-tighter text-blue-900 dark:text-white">Solut Enerji</span>
+</a>
+<div class="hidden md:flex items-center gap-8 font-manrope text-sm font-semibold tracking-tight">
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-900 dark:hover:text-white transition-colors" href="/">Ana Sayfa</a>
+<a class="text-blue-900 dark:text-yellow-500 border-b-2 border-yellow-500 pb-1" href="/gunes-enerjisi/">Güneş Enerjisi</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-900 dark:hover:text-white transition-colors" href="/ev-sarj-ve-danismanlik/">EV Şarj</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-900 dark:hover:text-white transition-colors" href="/ev-sarj-ve-danismanlik/">Danışmanlık</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-900 dark:hover:text-white transition-colors" href="/iletisim/">İletişim</a>
+</div>
+<a href="/iletisim/" class="bg-primary text-on-primary px-6 py-2 rounded-md font-headline font-bold text-sm hover:opacity-80 transition-all duration-200 active:scale-95">Teklif Al</a>
+</div>
+<div class="bg-slate-100 dark:bg-slate-800 h-[1px] w-full"></div>
+</nav>
+<main class="pt-24">
+<!-- Hero Section -->
+<section class="relative min-h-[716px] flex items-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img alt="Modern Residential Solar Panels" class="w-full h-full object-cover" data-alt="Modern house roof with high efficiency solar panels installed" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnr4WauqAkwSS_OY8bfqXgdInyR9YtsNXewpBfPEs5Gi6khxhXkDSwTvpiKATIZv6PaTa8dFXvQDA1OIsLU4ELP6QQ5oHcZKsGW2tzebpCW_1PYlDRqy_891LlxzkRUJXJ9cr1swljpMPsvAhwaw-TYOdZTQd6JKR8nulnBi9rc0fPsLfFyvA_948xk0s5n8FddIWDM0PbOmygUEUDbQiIdGAIa1SEk3VsGQ2RHH_BSdwzRgfMO3MRgpnPqQG5vq8evABqMGITD4g"/>
+<div class="absolute inset-0 bg-gradient-to-r from-primary/90 to-primary/40"></div>
+</div>
+<div class="relative z-10 max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12">
+<div class="lg:col-span-8">
+<span class="inline-block py-1 px-3 bg-secondary-container text-on-secondary-container text-[10px] font-bold tracking-[0.15em] uppercase rounded-sm mb-6 font-label">
+                        MESKEN ÇATI GES
+                    </span>
+<h1 class="text-5xl md:text-7xl font-headline font-extrabold text-white tracking-tighter leading-tight mb-8">
+                        Evinizin Enerjisini <br/> <span class="text-secondary-container">Geleceğe Dönüştürün</span>
+</h1>
+<p class="text-lg md:text-xl text-primary-fixed leading-relaxed max-w-2xl font-body">
+                        Mesken Çatı GES (Güneş Enerji Santrali) ile sadece faturanızı sıfırlamakla kalmayın, karbon ayak izinizi azaltarak sürdürülebilir bir yaşamın kapılarını aralayın. Profesyonel mühendislik kadromuzla anahtar teslim çözümler sunuyoruz.
+                    </p>
+</div>
+</div>
+</section>
+<!-- Stats Monolith Section -->
+<section class="relative z-20 -mt-16 max-w-7xl mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-1 bg-white shadow-2xl rounded-xl overflow-hidden">
+<div class="p-10 bg-surface-container-lowest flex flex-col items-center text-center border-r border-surface-container">
+<span class="text-5xl font-headline font-extrabold text-primary mb-2 tracking-tighter">%100</span>
+<span class="text-sm font-label uppercase tracking-widest text-on-surface-variant font-semibold">Enerji Bağımsızlığı</span>
+</div>
+<div class="p-10 bg-surface-container-lowest flex flex-col items-center text-center border-r border-surface-container">
+<span class="text-5xl font-headline font-extrabold text-primary mb-2 tracking-tighter">25+</span>
+<span class="text-sm font-label uppercase tracking-widest text-on-surface-variant font-semibold">Yıl Performans Garantisi</span>
+</div>
+<div class="p-10 bg-surface-container-lowest flex flex-col items-center text-center">
+<span class="text-5xl font-headline font-extrabold text-secondary mb-2 tracking-tighter">4-6 Yıl</span>
+<span class="text-sm font-label uppercase tracking-widest text-on-surface-variant font-semibold">Yatırım Geri Dönüşü</span>
+</div>
+</div>
+</section>
+<!-- Benefits Section - Asymmetric Layout -->
+<section class="py-24 max-w-7xl mx-auto px-6">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+<div class="lg:col-span-5">
+<h2 class="text-4xl font-headline font-extrabold text-primary tracking-tight leading-tight mb-6">
+                        Neden Solut Enerji ile Güneş Paneli Kurmalısınız?
+                    </h2>
+<p class="text-on-surface-variant text-lg leading-relaxed mb-8">
+                        Modern mühendislik yaklaşımlarımızla, çatınızın potansiyelini maksimum verimle kullanıyoruz. Estetik tasarımı teknik mükemmellik ile birleştiriyoruz.
+                    </p>
+<div class="space-y-6">
+<div class="flex gap-4 items-start">
+<div class="p-3 bg-secondary-container rounded-lg text-primary">
+<span class="material-symbols-outlined" data-icon="savings">savings</span>
+</div>
+<div>
+<h4 class="font-bold text-primary mb-1">Maksimum Tasarruf</h4>
+<p class="text-sm text-on-surface-variant">Elektrik faturalarınızı minimize edin ve enerji fiyat artışlarından etkilenmeyin.</p>
+</div>
+</div>
+<div class="flex gap-4 items-start">
+<div class="p-3 bg-secondary-container rounded-lg text-primary">
+<span class="material-symbols-outlined" data-icon="eco">eco</span>
+</div>
+<div>
+<h4 class="font-bold text-primary mb-1">Ekolojik Katkı</h4>
+<p class="text-sm text-on-surface-variant">Yıllık ortalama 5 ton karbon salınımını engelleyerek doğayı koruyun.</p>
+</div>
+</div>
+<div class="flex gap-4 items-start">
+<div class="p-3 bg-secondary-container rounded-lg text-primary">
+<span class="material-symbols-outlined" data-icon="real_estate_agent">real_estate_agent</span>
+</div>
+<div>
+<h4 class="font-bold text-primary mb-1">Emlak Değeri Artışı</h4>
+<p class="text-sm text-on-surface-variant">Kendi enerjisini üreten bir konut, emlak piyasasında %15 daha değerlidir.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-7 grid grid-cols-2 gap-4">
+<div class="space-y-4 pt-12">
+<div class="rounded-2xl overflow-hidden aspect-[4/5]">
+<img alt="Solar Tech" class="w-full h-full object-cover" data-alt="Closeup of high efficiency blue crystalline solar cells" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA59cGhI1DklOzIpPlL5cB_6OhG8rPyFWiiztd3gokw_MC9tn-ACVgj3yAcvrGDjarDxVdldkcZcWd7fQ8RevKqeyoEWugWvSmHJjJAXv_66Y0cFIkpEMLxV77Yxj73Iw8yZpfS7EM8CqKUOzi6ftN_F6rlpbOyZW73p4XKrjjSkWc2kR3N-ACGUnuef1GXww4D4FuqT5ra_Gz5cKzBPdaOOfsMw3IP3bWrLw9MECocFRUm5kTBTBtq0wiRlGApEumFfvZCbzX2O7w"/>
+</div>
+<div class="bg-primary p-8 rounded-2xl text-white">
+<span class="material-symbols-outlined text-4xl mb-4" data-icon="verified_user">verified_user</span>
+<h3 class="text-xl font-bold mb-2">Tier-1 Kalite</h3>
+<p class="text-sm text-primary-fixed-dim">Dünyanın en iyi panel ve inverter üreticileri ile çalışıyoruz.</p>
+</div>
+</div>
+<div class="space-y-4">
+<div class="bg-secondary-container p-8 rounded-2xl text-primary">
+<span class="material-symbols-outlined text-4xl mb-4" data-icon="monitoring">monitoring</span>
+<h3 class="text-xl font-bold mb-2">Mobil İzleme</h3>
+<p class="text-sm text-on-secondary-container">Üretiminizi her an akıllı telefonunuzdan takip edin.</p>
+</div>
+<div class="rounded-2xl overflow-hidden aspect-[4/5]">
+<img alt="Residential Solar" class="w-full h-full object-cover" data-alt="Modern architecture home with integrated solar panel system" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBu_U87hbnOhip5P0Az-_ObeVvphfJ_tXeuvSu0LAS07ThMKNXB-mwtbN1xXySu4gwd5FxjG9DsWNgipSoFyHnZ76GJcXdK1NFlwB3SMiFysgMW6zTrN13tqrp71gGq2YFVxo6RA6etl-4IN2RbRgR-kH491icqGcDKvwS9vW2RjGew1W-2p5gDDm2JENw35bhkhV_NS36t09PifMbD8MNNP1WWwlwYAl_xntX4VSoA5Cbnri5gD_0DbqzfBIF24xqrN0nVlU73q7s"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Process Section - Kinetic Flow -->
+<section class="py-24 bg-surface-container-low">
+<div class="max-w-7xl mx-auto px-6">
+<div class="mb-16">
+<span class="text-secondary font-bold tracking-widest text-xs uppercase font-label">Süreç Yönetimi</span>
+<h2 class="text-4xl font-headline font-extrabold text-primary mt-2">Nasıl Çalışıyoruz?</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<!-- Step 1 -->
+<div class="relative group">
+<div class="text-8xl font-headline font-black text-primary/5 absolute -top-8 -left-4">01</div>
+<div class="relative z-10 pt-4">
+<h3 class="text-xl font-bold text-primary mb-3">Keşif ve Analiz</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">
+                                Uzman ekibimiz çatınızı ve tüketim alışkanlıklarınızı yerinde inceler, teknik fizibilite raporu hazırlar.
+                            </p>
+</div>
+<div class="mt-6 h-1 w-full bg-surface-container-highest group-hover:bg-secondary transition-colors"></div>
+</div>
+<!-- Step 2 -->
+<div class="relative group">
+<div class="text-8xl font-headline font-black text-primary/5 absolute -top-8 -left-4">02</div>
+<div class="relative z-10 pt-4">
+<h3 class="text-xl font-bold text-primary mb-3">Projelendirme</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">
+                                Statik hesaplamalar ve elektriksel tasarımlar yapılarak yasal izin süreçleri başlatılır.
+                            </p>
+</div>
+<div class="mt-6 h-1 w-full bg-surface-container-highest group-hover:bg-secondary transition-colors"></div>
+</div>
+<!-- Step 3 -->
+<div class="relative group">
+<div class="text-8xl font-headline font-black text-primary/5 absolute -top-8 -left-4">03</div>
+<div class="relative z-10 pt-4">
+<h3 class="text-xl font-bold text-primary mb-3">Kurulum</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">
+                                Mühendis denetiminde, İSG kurallarına uygun olarak montaj ve devreye alma işlemleri tamamlanır.
+                            </p>
+</div>
+<div class="mt-6 h-1 w-full bg-surface-container-highest group-hover:bg-secondary transition-colors"></div>
+</div>
+<!-- Step 4 -->
+<div class="relative group">
+<div class="text-8xl font-headline font-black text-primary/5 absolute -top-8 -left-4">04</div>
+<div class="relative z-10 pt-4">
+<h3 class="text-xl font-bold text-primary mb-3">Bakım &amp; Destek</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">
+                                Uzaktan izleme ve periyodik bakımlarla sisteminizin 25 yıl boyunca verimli çalışmasını sağlıyoruz.
+                            </p>
+</div>
+<div class="mt-6 h-1 w-full bg-surface-container-highest group-hover:bg-secondary transition-colors"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Section - Glassmorphism & Tonal Layering -->
+<section class="py-24 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-1/2 h-full bg-primary-container/10 -skew-x-12 translate-x-32"></div>
+<div class="max-w-7xl mx-auto px-6 relative z-10">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div>
+<h2 class="text-4xl font-headline font-extrabold text-primary mb-6">Güneşin Gücünü <br/>Evinize Taşıyın</h2>
+<p class="text-lg text-on-surface-variant mb-10">
+                            Ücretsiz saha keşfi ve maliyet analizi için formu doldurun. Mühendislerimiz 24 saat içinde sizinle iletişime geçsin.
+                        </p>
+<div class="space-y-6">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary" data-icon="call">call</span>
+<span class="font-bold text-primary">+90 (212) 555 0101</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary" data-icon="mail">mail</span>
+<span class="font-bold text-primary">solar@solutenerji.com</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-8 md:p-12 rounded-2xl kinetic-monolith-shadow border border-outline-variant/10">
+<form class="space-y-6" action="https://formspree.io/f/FORM_ID_HERE" method="POST">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-xs font-bold font-label uppercase text-on-surface-variant tracking-wider">Ad Soyad</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant focus:border-primary focus:ring-0 transition-colors py-3 text-sm" placeholder="John Doe" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold font-label uppercase text-on-surface-variant tracking-wider">Telefon</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant focus:border-primary focus:ring-0 transition-colors py-3 text-sm" placeholder="+90 5xx" type="tel"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold font-label uppercase text-on-surface-variant tracking-wider">Email Adresi</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant focus:border-primary focus:ring-0 transition-colors py-3 text-sm" placeholder="email@adresi.com" type="email"/>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold font-label uppercase text-on-surface-variant tracking-wider">Çatı Tipi</label>
+<select class="w-full bg-transparent border-0 border-b border-outline-variant focus:border-primary focus:ring-0 transition-colors py-3 text-sm">
+<option>Müstakil Ev</option>
+<option>Apartman / Site</option>
+<option>Villa</option>
+<option>Diğer</option>
+</select>
+</div>
+<div class="pt-4">
+<button class="w-full bg-secondary-container text-on-secondary-container font-headline font-extrabold py-4 rounded-md hover:bg-secondary-fixed transition-colors flex items-center justify-center gap-2" type="submit">
+                                    Ücretsiz Analiz İsteyin
+                                    <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<p class="text-[10px] text-center text-on-surface-variant">
+                                Gönder butonuna basarak Veri Politikamızı kabul etmiş olursunuz.
+                            </p>
+</form>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-blue-950 dark:bg-black w-full py-12 px-6 mt-auto border-t border-blue-900 dark:border-slate-800">
+<div class="flex flex-col md:flex-row justify-between items-center gap-6 max-w-7xl mx-auto">
+<div class="text-lg font-bold text-white uppercase tracking-widest font-headline">
+                Solut Enerji
+            </div>
+<div class="flex gap-8 font-inter text-xs tracking-wide text-slate-300">
+<a class="text-slate-400 hover:text-white transition-colors" href="#">Privacy Policy</a>
+<a class="text-slate-400 hover:text-white transition-colors" href="#">Terms of Service</a>
+<a class="text-slate-400 hover:text-white transition-colors" href="/iletisim/">İletişim</a>
+<a class="text-slate-400 hover:text-white transition-colors" href="#">Career</a>
+</div>
+<div class="font-inter text-xs tracking-wide text-slate-300">
+                © 2025 Solut Enerji Mühendislik. Tüm hakları saklıdır.
+            </div>
+</div>
+</footer>
+</body></html>
