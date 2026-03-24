@@ -6,15 +6,6 @@
 /
   Cache-Control: public, max-age=3600
 
-/gunes-enerjisi/
-  Cache-Control: public, max-age=3600
-
-/ev-sarj-ve-danismanlik/
-  Cache-Control: public, max-age=3600
-
-/iletisim/
-  Cache-Control: public, max-age=3600
-
 # Güvenlik headerları
 /*
   X-Content-Type-Options: nosniff

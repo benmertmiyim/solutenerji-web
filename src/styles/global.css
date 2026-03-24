@@ -31,3 +31,30 @@
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
 }
+
+html {
+  scroll-padding-top: 5rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+.section-anchor {
+  scroll-margin-top: 5rem;
+}
+
+.placeholder-outline::placeholder {
+  color: #747780;
+}
+
+[data-anchor-link][data-active='true'] {
+  border-bottom-color: #eab308;
+  color: #1e3a8a;
+}
+
+.dark [data-anchor-link][data-active='true'] {
+  color: #eab308;
+}

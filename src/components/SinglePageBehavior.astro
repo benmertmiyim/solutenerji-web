@@ -1,0 +1,142 @@
+<script is:inline>
+  const sectionHashes = new Set([
+    '#ana-sayfa',
+    '#gunes-enerjisi',
+    '#ev-sarj-ve-danismanlik',
+    '#danismanlik',
+    '#iletisim',
+  ]);
+
+  const links = Array.from(document.querySelectorAll('[data-anchor-link]'));
+  const sections = Array.from(document.querySelectorAll('[data-scroll-section]'));
+  const serviceSelect = document.querySelector('[data-service-select]');
+  const NAV_HEIGHT = 80;
+
+  function normalizeHash(rawHash) {
+    if (!rawHash || rawHash === '#hizmetler') return '#ana-sayfa';
+    return sectionHashes.has(rawHash) ? rawHash : '#ana-sayfa';
+  }
+
+  function hashFromHref(href) {
+    try {
+      return normalizeHash(new URL(href, window.location.origin).hash);
+    } catch {
+      return '#ana-sayfa';
+    }
+  }
+
+  function setActive(hash) {
+    const activeHash = normalizeHash(hash);
+
+    links.forEach((link) => {
+      const isActive = hashFromHref(link.getAttribute('href') ?? '') === activeHash;
+      link.dataset.active = isActive ? 'true' : 'false';
+
+      if (isActive) {
+        link.setAttribute('aria-current', 'page');
+      } else {
+        link.removeAttribute('aria-current');
+      }
+    });
+  }
+
+  function updateUrl(activeId) {
+    const nextUrl = activeId === 'ana-sayfa' ? '/' : `/#${activeId}`;
+    const currentUrl = `${window.location.pathname}${window.location.hash}`;
+
+    if (currentUrl !== nextUrl) {
+      window.history.replaceState({}, '', nextUrl);
+    }
+  }
+
+  // Scroll-position-based active section detection
+  function detectActiveSection() {
+    const scrollY = window.scrollY + NAV_HEIGHT + 20;
+
+    // If at the very top, activate ana-sayfa
+    if (window.scrollY < 100) {
+      setActive('#ana-sayfa');
+      updateUrl('ana-sayfa');
+      return;
+    }
+
+    // If at the very bottom, activate the last section
+    if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 50) {
+      const lastSection = sections[sections.length - 1];
+      if (lastSection && lastSection.id) {
+        setActive(`#${lastSection.id}`);
+        updateUrl(lastSection.id);
+      }
+      return;
+    }
+
+    // Find the section whose top is closest to (but above) the current scroll position
+    let activeSection = sections[0];
+    for (const section of sections) {
+      const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+      if (sectionTop <= scrollY) {
+        activeSection = section;
+      } else {
+        break;
+      }
+    }
+
+    if (activeSection && activeSection.id) {
+      setActive(`#${activeSection.id}`);
+      updateUrl(activeSection.id);
+    }
+  }
+
+  // Throttled scroll handler
+  let scrollTicking = false;
+  window.addEventListener('scroll', () => {
+    if (!scrollTicking) {
+      window.requestAnimationFrame(() => {
+        detectActiveSection();
+        scrollTicking = false;
+      });
+      scrollTicking = true;
+    }
+  });
+
+  // Service select behavior
+  if (serviceSelect instanceof HTMLSelectElement) {
+    document.addEventListener('click', (event) => {
+      const trigger = event.target instanceof Element ? event.target.closest('[data-service]') : null;
+
+      if (!(trigger instanceof HTMLElement)) return;
+
+      const nextValue = trigger.dataset.service ?? '';
+      serviceSelect.value = nextValue;
+    });
+  }
+
+  // Precise scroll positioning for anchor links
+  function scrollToSection(hash) {
+    const targetId = hash.replace('#', '');
+    const targetEl = document.getElementById(targetId);
+    if (!targetEl) return;
+
+    const targetTop = targetEl.getBoundingClientRect().top + window.pageYOffset - NAV_HEIGHT;
+    window.scrollTo({ top: targetTop, behavior: 'smooth' });
+  }
+
+  document.querySelectorAll('[data-anchor-link], a[href^="/#"], a[href^="#"]').forEach((link) => {
+    link.addEventListener('click', (e) => {
+      const href = link.getAttribute('href') || '';
+      const hash = href.includes('#') ? '#' + href.split('#')[1] : '';
+      if (!hash) return;
+
+      e.preventDefault();
+      window.history.pushState({}, '', href);
+      scrollToSection(hash);
+      setActive(hash);
+    });
+  });
+
+  // Initial state
+  if (window.location.hash) {
+    setTimeout(() => scrollToSection(window.location.hash), 100);
+  }
+  detectActiveSection();
+</script>

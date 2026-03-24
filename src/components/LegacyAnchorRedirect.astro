@@ -1,0 +1,30 @@
+---
+interface Props {
+  description: string;
+  target: string;
+  title: string;
+}
+
+const { description, target, title } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="robots" content="noindex,follow" />
+  <link rel="canonical" href="/" />
+  <meta http-equiv="refresh" content={`0;url=${target}`} />
+</head>
+<body>
+  <script is:inline define:vars={{ target }}>
+    window.location.replace(target);
+  </script>
+  <p>
+    Yönlendiriliyorsunuz.
+    <a href={target}>Devam etmek için tıklayın.</a>
+  </p>
+</body>
+</html>

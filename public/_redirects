@@ -2,8 +2,16 @@
 # https://www.solutenerji.com/* -> https://solutenerji.com/:splat 301
 
 # Eski Stitch klasör yollarından yönlendirme
-/ana_sayfa/* / 301
-/ana_sayfa_b_y_k_logo/* / 301
-/mesken_at_ges_kurulumu/* /gunes-enerjisi/ 301
-/dan_manl_k_ve_ev_z_mleri/* /ev-sarj-ve-danismanlik/ 301
-/solut_enerji_navigation_flow/* / 301
+/ana_sayfa/* /#ana-sayfa 301
+/ana_sayfa_b_y_k_logo/* /#ana-sayfa 301
+/mesken_at_ges_kurulumu/* /#gunes-enerjisi 301
+/dan_manl_k_ve_ev_z_mleri/* /#ev-sarj-ve-danismanlik 301
+/solut_enerji_navigation_flow/* /#ana-sayfa 301
+
+# Tek sayfa anchor yönlendirmeleri
+/gunes-enerjisi /#gunes-enerjisi 301
+/gunes-enerjisi/ /#gunes-enerjisi 301
+/ev-sarj-ve-danismanlik /#ev-sarj-ve-danismanlik 301
+/ev-sarj-ve-danismanlik/ /#ev-sarj-ve-danismanlik 301
+/iletisim /#iletisim 301
+/iletisim/ /#iletisim 301
