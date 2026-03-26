@@ -9,10 +9,18 @@ const navLinks = [
 ---
 <nav class="fixed top-0 z-50 w-full border-b border-slate-100 bg-white/80 shadow-sm backdrop-blur-md">
   <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
-    <a href="/#ana-sayfa" aria-label="Solut Enerji" class="flex min-w-0 max-w-[65%] items-center sm:max-w-none">
+    <a
+      href="/#ana-sayfa"
+      aria-label="Solut Enerji"
+      class="relative z-[2] flex min-w-0 max-w-[65%] items-center [isolation:isolate] sm:max-w-none"
+    >
       <img
         alt="Solut Enerji Logo"
-        class="h-12 w-auto origin-left transform-gpu sm:h-14 md:h-16 md:scale-[1.5]"
+        width="459"
+        height="306"
+        decoding="sync"
+        fetchpriority="high"
+        class="h-12 w-auto max-h-12 origin-left [-webkit-backface-visibility:hidden] [backface-visibility:hidden] [transform:translateZ(0)] sm:h-14 sm:max-h-14 md:h-16 md:max-h-none md:[transform:translate3d(0,0,0)_scale(1.5)]"
         src="/assets/logo.svg"
       >
     </a>
