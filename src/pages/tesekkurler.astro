@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Teşekkürler | Solut Enerji"
+  description="Mesajınız bize ulaştı. En kısa sürede sizinle iletişime geçeceğiz."
+  noindex={true}
+>
+  <div class="mx-auto flex min-h-[70vh] max-w-2xl flex-col items-center justify-center px-6 pb-24 pt-32 text-center">
+    <div class="kinetic-monolith-gradient mb-8 flex h-20 w-20 items-center justify-center rounded-full">
+      <span class="material-symbols-outlined text-4xl text-secondary-container">mark_email_read</span>
+    </div>
+    <h1 class="mb-4 font-headline text-3xl font-extrabold text-primary md:text-4xl">Teşekkür ederiz</h1>
+    <p class="mb-10 text-lg leading-relaxed text-on-surface-variant">
+      Talebiniz başarıyla iletildi. Uzman ekibimiz mesajınızı inceleyerek en kısa sürede size dönüş yapacaktır.
+    </p>
+    <div class="flex flex-col gap-4 sm:flex-row">
+      <a
+        href="/#ana-sayfa"
+        class="rounded-md bg-primary px-8 py-3 font-bold text-on-primary transition-opacity hover:opacity-90"
+      >
+        Ana Sayfaya Dön
+      </a>
+      <a
+        href="/#iletisim"
+        class="rounded-md border-2 border-primary px-8 py-3 font-bold text-primary transition-colors hover:bg-primary/5"
+      >
+        Yeni Mesaj
+      </a>
+    </div>
+  </div>
+</BaseLayout>

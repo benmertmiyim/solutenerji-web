@@ -1,0 +1,129 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import StructuredData from '../../../components/StructuredData.astro';
+import { breadcrumbJsonLd, faqPageJsonLd, serviceJsonLd } from '../../../seo/schema';
+
+const site = Astro.site ?? new URL('https://solutenerji.com');
+const path = '/hizmetler/ges-danismanlik/';
+
+const title = 'GES Danışmanlık ve Fizibilite | İzmir, Ege | Solut Enerji';
+const description =
+  'Güneş enerjisi yatırımı için fizibilite, üretim simülasyonu, teknik denetim ve risk analizi. İzmir ve Ege bölgesinde bağımsız mühendislik danışmanlığı.';
+
+const keywords =
+  'ges danışmanlık izmir, güneş enerjisi fizibilite ege, çatı ges teknik danışmanlık, ges yatırım analizi';
+
+const faqs = [
+  {
+    question: 'Danışmanlık ile anahtar teslim kurulum aynı mı?',
+    answer:
+      'Danışmanlık; doğru kapasite, ürün kısa listesi, teknik şartname ve süreç risklerinin azaltılmasına odaklanır. Anahtar teslim kurulum ayrı bir sözleşme konusudur; isterseniz iki aşama birlikte planlanabilir.',
+  },
+  {
+    question: 'Fizibilite raporunda neler bulunur?',
+    answer:
+      'Özetle: saha varsayımları, üretim tahmini aralığı, yatırım maliyeti kalemleri (genel aralık), beklenen tüketim örtüşmesi ve önemli teknik riskler. Abartılı garanti yerine senaryo bazlı okuma sunulur.',
+  },
+  {
+    question: 'Mevcut bir GES kurulumunu denetleyebilir misiniz?',
+    answer:
+      'Evet; DC tarafı polarite ve izolasyon kontrolleri, AC koruma grubu uyumu, etiketleme ve dokümantasyon gibi başlıklarda saha denetimi ve raporlama yapılabilir.',
+  },
+  {
+    question: 'Hizmet bölgesi İzmir dışına çıkıyor mu?',
+    answer:
+      'Ege çevresi ve proje ölçeğine göre saha ziyareti planlanır. Uzaktan ön değerlendirme ile başlanıp fizibilite derinliği birlikte netleştirilir.',
+  },
+] as const;
+
+const breadcrumbItems = [
+  { name: 'Ana sayfa', path: '/' },
+  { name: 'GES danışmanlık', path },
+] as const;
+
+const schemas = [
+  breadcrumbJsonLd(site, breadcrumbItems),
+  serviceJsonLd(site, {
+    name: 'Güneş enerjisi santrali danışmanlığı',
+    description,
+    path,
+  }),
+  faqPageJsonLd(faqs),
+];
+---
+<BaseLayout {title} {description} {keywords}>
+  <StructuredData slot="head" schema={schemas} />
+
+  <main class="bg-background pb-20 pt-28">
+    <article class="mx-auto max-w-3xl px-6">
+      <nav aria-label="Sayfa konumu" class="mb-10 text-sm text-on-surface-variant">
+        <ol class="flex flex-wrap gap-x-2 gap-y-1">
+          <li>
+            <a href="/" class="text-secondary underline-offset-4 hover:underline">Ana sayfa</a>
+          </li>
+          <li aria-hidden="true">/</li>
+          <li class="text-on-surface">GES danışmanlık</li>
+        </ol>
+      </nav>
+
+      <h1 class="font-headline text-3xl font-bold tracking-tight text-primary md:text-4xl">
+        İzmir ve Ege’de GES danışmanlığı ve fizibilite
+      </h1>
+      <p class="mt-4 text-lg leading-relaxed text-on-surface-variant">
+        Güneş enerjisi yatırımı; doğru başlangıç gücü, bağlantı koşulları ve ürün seçimiyle belirlenir. Danışmanlık
+        hizmetimiz, yatırımcının teknik ve ticari risklerini erken aşamada görünür kılar. İzmir ve Ege bölgesinde saha
+        gerçekleriyle uyumlu fizibilite ve teknik şartname hazırlığı sunuyoruz.
+      </p>
+
+      <h2 class="mt-12 font-headline text-2xl font-bold text-primary">Kimler için?</h2>
+      <p class="mt-4 leading-relaxed text-on-surface-variant">
+        Mesken ve ticari çatı sahipleri, site yönetimleri, küçük ölçekli sanayi çatıları ve yatırımcı ortaklıklar;
+        kurulum öncesi bağımsız teknik görüş veya ikinci görüş talep ettiğinde bu hizmet devreye girer.
+      </p>
+
+      <h2 class="mt-10 font-headline text-2xl font-bold text-primary">Çalışma başlıkları</h2>
+      <ul class="mt-4 list-disc space-y-3 ps-5 leading-relaxed text-on-surface-variant">
+        <li>Ön fizibilite ve üretim simülasyonu (PVsyst benzeri araçlarla senaryo).</li>
+        <li>Teknik şartname ve ihale dosyası desteği (kurulum firmasından bağımsız).</li>
+        <li>Kurulum sonrası kabul denetimi ve eksiklik raporu.</li>
+        <li>Performans sapması analizi (ölçüm verisi varsa).</li>
+      </ul>
+
+      <h2 class="mt-10 font-headline text-2xl font-bold text-primary">Şeffaflık ve E-E-A-T</h2>
+      <p class="mt-4 leading-relaxed text-on-surface-variant">
+        Mühendislik kimliğimizle, abartılı üretim veya geri dönüş vaatleri yerine ölçülebilir varsayımlar ve
+        duyarlılık analizi paylaşırız. Bu yaklaşım hem yatırımcı koruma hem de arama motorlarında güvenilir içerik
+        üretimi açısından sürdürülebilir bir zemindir.
+      </p>
+
+      <p class="mt-6">
+        <a
+          href="/#iletisim"
+          class="inline-flex min-h-[44px] items-center rounded-md bg-primary px-5 py-2.5 text-sm font-semibold text-on-primary transition-opacity hover:opacity-90"
+        >
+          Danışmanlık talebi oluşturun
+        </a>
+        <a
+          href="/#danismanlik"
+          class="ms-4 inline-flex min-h-[44px] items-center text-sm font-semibold text-secondary underline-offset-4 hover:underline"
+        >
+          Ana sayfadaki danışmanlık özetine dön
+        </a>
+      </p>
+
+      <section class="mt-16 border-t border-slate-200 pt-12" aria-labelledby="sss-dan">
+        <h2 id="sss-dan" class="font-headline text-2xl font-bold text-primary">
+          Sık sorulan sorular
+        </h2>
+        <dl class="mt-8 space-y-8">
+          {faqs.map((item) => (
+            <div>
+              <dt class="font-semibold text-on-surface">{item.question}</dt>
+              <dd class="mt-2 leading-relaxed text-on-surface-variant">{item.answer}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+    </article>
+  </main>
+</BaseLayout>

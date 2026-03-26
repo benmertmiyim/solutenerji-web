@@ -4,14 +4,16 @@
 # Eski Stitch klasör yollarından yönlendirme
 /ana_sayfa/* /#ana-sayfa 301
 /ana_sayfa_b_y_k_logo/* /#ana-sayfa 301
-/mesken_at_ges_kurulumu/* /#gunes-enerjisi 301
-/dan_manl_k_ve_ev_z_mleri/* /#ev-sarj-ve-danismanlik 301
+/mesken_at_ges_kurulumu/* /hizmetler/mesken-cati-ges/ 301
+/dan_manl_k_ve_ev_z_mleri/* /hizmetler/ev-sarj-istasyonu/ 301
 /solut_enerji_navigation_flow/* /#ana-sayfa 301
 
-# Tek sayfa anchor yönlendirmeleri
-/gunes-enerjisi /#gunes-enerjisi 301
-/gunes-enerjisi/ /#gunes-enerjisi 301
-/ev-sarj-ve-danismanlik /#ev-sarj-ve-danismanlik 301
-/ev-sarj-ve-danismanlik/ /#ev-sarj-ve-danismanlik 301
+# Eski kısa yollar → indekslenebilir hizmet URL’leri (SEO)
+/gunes-enerjisi /hizmetler/mesken-cati-ges/ 301
+/gunes-enerjisi/ /hizmetler/mesken-cati-ges/ 301
+/ev-sarj-ve-danismanlik /hizmetler/ev-sarj-istasyonu/ 301
+/ev-sarj-ve-danismanlik/ /hizmetler/ev-sarj-istasyonu/ 301
+
+# İletişim: tek sayfa anchor deneyimi korunur
 /iletisim /#iletisim 301
 /iletisim/ /#iletisim 301

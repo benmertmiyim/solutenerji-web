@@ -1,6 +1,7 @@
 <script is:inline>
   const sectionHashes = new Set([
     '#ana-sayfa',
+    '#hizmetler',
     '#gunes-enerjisi',
     '#ev-sarj-ve-danismanlik',
     '#danismanlik',
@@ -13,7 +14,7 @@
   const NAV_HEIGHT = 80;
 
   function normalizeHash(rawHash) {
-    if (!rawHash || rawHash === '#hizmetler') return '#ana-sayfa';
+    if (!rawHash) return '#ana-sayfa';
     return sectionHashes.has(rawHash) ? rawHash : '#ana-sayfa';
   }
 

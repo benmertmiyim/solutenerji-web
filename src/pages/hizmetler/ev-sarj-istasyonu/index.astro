@@ -1,0 +1,129 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import StructuredData from '../../../components/StructuredData.astro';
+import { breadcrumbJsonLd, faqPageJsonLd, serviceJsonLd } from '../../../seo/schema';
+
+const site = Astro.site ?? new URL('https://solutenerji.com');
+const path = '/hizmetler/ev-sarj-istasyonu/';
+
+const title = 'İzmir’de EV Şarj İstasyonu Kurulumu (AC / DC) | Solut Enerji';
+const description =
+  'Konut, site ve işyeri için elektrikli araç şarj altyapısı: AC duvar ünitesi ve ihtiyaca göre DC hızlı şarj projeleri. İzmir ve Ege bölgesinde mühendislik ve kurulum.';
+
+const keywords =
+  'izmir ev şarj istasyonu, elektrikli araç şarj kurulumu izmir, ac şarj izmir, ev tipi ev şarjı ege';
+
+const faqs = [
+  {
+    question: 'Evimde AC şarj yeterli mi, DC gerekir mi?',
+    answer:
+      'Konutlarda gece boyu şarj için çoğu kullanıcıda AC (Type 2) duvar kutusu yeterlidir. DC hızlı şarj genelde ortak alan, işletme veya filo ihtiyaçlarında değerlendirilir; tesisat kapasitesi ve kullanım senaryosu birlikte incelenir.',
+  },
+  {
+    question: 'İzmir’de kurulum için dağıtım şirketi onayı gerekir mi?',
+    answer:
+      'Bağlantı gücü ve tesisat değişikliklerine göre resmi süreçler değişebilir. Ön değerlendirmede sayaç hattı, sigorta grubu ve olası güç artışı netleştirilir; gerekli başvurular şeffaf biçimde planlanır.',
+  },
+  {
+    question: 'Şarj istasyonu markası seçiminde nelere bakıyorsunuz?',
+    answer:
+      'Araç uyumluluğu (Type 2 / CCS vb.), garanti ve servis ağı, aşırı akım-kısa devre korumaları, OCPP ve uzaktan izleme ihtiyacı gibi kriterler; sahada test edilmiş ürün gamıyla eşleştirilir.',
+  },
+  {
+    question: 'Ege bölgesinde hangi projelerde EV şarj kuruyorsunuz?',
+    answer:
+      'Mesken, villa, apartman ortak otoparkı ve küçük-orta ölçekli ticari alanlarda projeler yürütülür. Mesafe ve lojistik, proje başında netleştirilir.',
+  },
+] as const;
+
+const breadcrumbItems = [
+  { name: 'Ana sayfa', path: '/' },
+  { name: 'EV şarj istasyonu', path },
+] as const;
+
+const schemas = [
+  breadcrumbJsonLd(site, breadcrumbItems),
+  serviceJsonLd(site, {
+    name: 'Elektrikli araç şarj istasyonu kurulumu',
+    description,
+    path,
+  }),
+  faqPageJsonLd(faqs),
+];
+---
+<BaseLayout {title} {description} {keywords}>
+  <StructuredData slot="head" schema={schemas} />
+
+  <main class="bg-background pb-20 pt-28">
+    <article class="mx-auto max-w-3xl px-6">
+      <nav aria-label="Sayfa konumu" class="mb-10 text-sm text-on-surface-variant">
+        <ol class="flex flex-wrap gap-x-2 gap-y-1">
+          <li>
+            <a href="/" class="text-secondary underline-offset-4 hover:underline">Ana sayfa</a>
+          </li>
+          <li aria-hidden="true">/</li>
+          <li class="text-on-surface">EV şarj istasyonu</li>
+        </ol>
+      </nav>
+
+      <h1 class="font-headline text-3xl font-bold tracking-tight text-primary md:text-4xl">
+        İzmir ve Ege’de elektrikli araç şarj istasyonu kurulumu
+      </h1>
+      <p class="mt-4 text-lg leading-relaxed text-on-surface-variant">
+        Elektrikli mobiliteye geçişte en kritik adım, güvenli ve sürdürülebilir şarj altyapısıdır. Solut Enerji olarak
+        İzmir merkezli mühendislik yaklaşımıyla konut ve iş yerlerinde AC duvar ünitelerinden, gerektiğinde DC hızlı
+        şarj altyapısına kadar uçtan uca planlama sunuyoruz.
+      </p>
+
+      <h2 class="mt-12 font-headline text-2xl font-bold text-primary">AC ve DC: kısa karar çerçevesi</h2>
+      <p class="mt-4 leading-relaxed text-on-surface-variant">
+        <strong class="text-on-surface">AC şarj</strong> çoğu bireysel kullanıcı için maliyet-etkin ve bakım dostu bir
+        başlangıçtır. <strong class="text-on-surface">DC hızlı şarj</strong> ise dönüş süresi ve yoğun kullanım
+        senaryolarında devreye girer; tesisat ve trafo kapasitesi ayrı değerlendirilir.
+      </p>
+
+      <h2 class="mt-10 font-headline text-2xl font-bold text-primary">Kurulum süreci</h2>
+      <ul class="mt-4 list-disc space-y-3 ps-5 leading-relaxed text-on-surface-variant">
+        <li>Keşif: pano, topraklama, kablo güzergâhı ve montaj noktası.</li>
+        <li>Yük analizi: mevcut sigorta grubu, faz dengesi ve olası güç artışı.</li>
+        <li>Ürün ve aksesuar seçimi: RCBO / kaçak akım, koruma koordinasyonu.</li>
+        <li>Devreye alma: fonksiyon testleri, kullanıcı eğitimi ve dokümantasyon.</li>
+      </ul>
+
+      <h2 class="mt-10 font-headline text-2xl font-bold text-primary">Ege iklimi ve saha koşulları</h2>
+      <p class="mt-4 leading-relaxed text-on-surface-variant">
+        Açık otoparklarda UV, nem ve tuzlu hava bağlantı elemanlarında kalite kriterlerini yükseltir. Bu nedenle IP sınıfı,
+        kablo kanalı ve bağlantı sıkma torkları sahada titizlikle uygulanır.
+      </p>
+
+      <p class="mt-6">
+        <a
+          href="/#iletisim"
+          class="inline-flex min-h-[44px] items-center rounded-md bg-primary px-5 py-2.5 text-sm font-semibold text-on-primary transition-opacity hover:opacity-90"
+        >
+          EV şarj için teklif isteyin
+        </a>
+        <a
+          href="/#ev-sarj-ve-danismanlik"
+          class="ms-4 inline-flex min-h-[44px] items-center text-sm font-semibold text-secondary underline-offset-4 hover:underline"
+        >
+          Ana sayfadaki özet bölüme dön
+        </a>
+      </p>
+
+      <section class="mt-16 border-t border-slate-200 pt-12" aria-labelledby="sss-ev">
+        <h2 id="sss-ev" class="font-headline text-2xl font-bold text-primary">
+          Sık sorulan sorular
+        </h2>
+        <dl class="mt-8 space-y-8">
+          {faqs.map((item) => (
+            <div>
+              <dt class="font-semibold text-on-surface">{item.question}</dt>
+              <dd class="mt-2 leading-relaxed text-on-surface-variant">{item.answer}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+    </article>
+  </main>
+</BaseLayout>

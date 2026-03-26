@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { siteConfig } from '../site.config';
+---
+<BaseLayout
+  title="Çerez Politikası | Solut Enerji"
+  description="Solut Enerji web sitesinde kullanılan çerezler ve tercihlerin yönetimi."
+>
+  <article class="mx-auto max-w-3xl px-6 pb-24 pt-28">
+    <h1 class="mb-6 font-headline text-3xl font-extrabold text-primary md:text-4xl">Çerez Politikası</h1>
+    <p class="mb-8 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-950">
+      <strong>Yasal uyarı:</strong> Bu metin örnek şablon niteliğindedir. Kullandığınız çerez araçlarına ve mevzuata göre
+      özelleştirilerek hukuk danışmanlığı ile onaylanmalıdır.
+    </p>
+    <div class="space-y-8 text-sm leading-relaxed text-on-surface-variant">
+      <section>
+        <h2 class="mb-3 font-headline text-xl font-bold text-primary">Çerez nedir?</h2>
+        <p>
+          Çerezler, ziyaret ettiğiniz web sitesi tarafından tarayıcınıza kaydedilen küçük metin dosyalarıdır. Oturumun
+          çalışması, tercihlerin hatırlanması ve istatistiksel analiz gibi amaçlarla kullanılabilir.
+        </p>
+      </section>
+      <section>
+        <h2 class="mb-3 font-headline text-xl font-bold text-primary">Hangi çerezleri kullanıyoruz?</h2>
+        <ul class="list-inside list-disc space-y-2">
+          <li><strong>Zorunlu çerezler:</strong> Sitenin güvenli çalışması için gerekli olanlar.</li>
+          <li><strong>İşlevsel çerezler:</strong> Dil veya form tercihleri gibi kullanıcı deneyimini iyileştirenler.</li>
+          <li><strong>Performans / analitik:</strong> Ziyaretçi sayıları ve sayfa kullanımı (varsa, ayrı onay ile).</li>
+        </ul>
+      </section>
+      <section>
+        <h2 class="mb-3 font-headline text-xl font-bold text-primary">Çerezleri nasıl yönetirsiniz?</h2>
+        <p>
+          Tarayıcı ayarlarınızdan çerezleri silebilir veya engelleyebilirsiniz. Üçüncü taraf çerezleri için ilgili
+          sağlayıcıların gizlilik ayarlarını kullanabilirsiniz. Çerezleri devre dışı bırakmanız bazı özelliklerin
+          çalışmamasına yol açabilir.
+        </p>
+      </section>
+      <section>
+        <h2 class="mb-3 font-headline text-xl font-bold text-primary">İletişim</h2>
+        <p>
+          Sorularınız için{' '}
+          <a class="font-medium text-primary underline hover:no-underline" href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>{' '}
+          adresinden bize ulaşabilirsiniz.
+        </p>
+      </section>
+    </div>
+  </article>
+</BaseLayout>

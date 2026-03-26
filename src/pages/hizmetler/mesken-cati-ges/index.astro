@@ -1,0 +1,143 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import StructuredData from '../../../components/StructuredData.astro';
+import { breadcrumbJsonLd, faqPageJsonLd, serviceJsonLd } from '../../../seo/schema';
+
+const site = Astro.site ?? new URL('https://solutenerji.com');
+const path = '/hizmetler/mesken-cati-ges/';
+
+const title =
+  'İzmir ve Ege’de Mesken Çatı GES Kurulumu | Solut Enerji';
+const description =
+  'Konut ve mesken çatıları için güneş enerjisi santrali: keşif, mühendislik, kurulum ve devreye alma. İzmir ve Ege bölgesinde anahtar teslim çatı GES.';
+
+const keywords =
+  'izmir güneş enerjisi kurulumu, ege çatı ges, mesken güneş paneli, ev tipi ges izmir, konut ges';
+
+const faqs = [
+  {
+    question: 'Mesken çatı GES kurulumu İzmir’de ne kadar sürer?',
+    answer:
+      'Çatı yapısı, bağlantı gücü ve onay süreçlerine göre değişir; tipik projelerde keşif ve mühendislik sonrası kurulum birkaç gün ile birkaç hafta arasında tamamlanabilir. Net süre, saha keşfi ve dağıtım şirketi süreçleri netleştikten sonra paylaşılır.',
+  },
+  {
+    question: 'Çatı GES ile elektrik faturam ne kadar düşer?',
+    answer:
+      'Tüketim profiliniz, panel gücü, gölgelenme ve tarife yapınıza bağlıdır. Ön fizibilitede üretim simülasyonu ve tüketimle örtüşme analiziyle makul bir aralık sunulur; abartılı vaatler yerine ölçülebilir senaryolar hedeflenir.',
+  },
+  {
+    question: 'Ege bölgesinde hangi il ve ilçelerde hizmet veriyorsunuz?',
+    answer:
+      'Merkez İzmir ve çevre illerde (Aydın, Manisa, Denizli vb.) saha çalışmaları yürütülür. Proje bazında erişim ve lojistik, ilk görüşmede netleştirilir.',
+  },
+  {
+    question: 'Onay ve bağlantı süreçlerini siz yönetiyor musunuz?',
+    answer:
+      'Dağıtım şirketi ve ilgili mevzuat çerçevesinde teknik dosya ve başvuru adımlarında mühendislik desteği sağlanır; müşteri onayı ve resmi başvurular şeffaf şekilde koordine edilir.',
+  },
+] as const;
+
+const breadcrumbItems = [
+  { name: 'Ana sayfa', path: '/' },
+  { name: 'Mesken çatı GES', path },
+] as const;
+
+const schemas = [
+  breadcrumbJsonLd(site, breadcrumbItems),
+  serviceJsonLd(site, {
+    name: 'Mesken çatı güneş enerjisi kurulumu',
+    description,
+    path,
+  }),
+  faqPageJsonLd(faqs),
+];
+---
+<BaseLayout {title} {description} {keywords}>
+  <StructuredData slot="head" schema={schemas} />
+
+  <main class="bg-background pb-20 pt-28">
+    <article class="mx-auto max-w-3xl px-6">
+      <nav aria-label="Sayfa konumu" class="mb-10 text-sm text-on-surface-variant">
+        <ol class="flex flex-wrap gap-x-2 gap-y-1">
+          <li>
+            <a href="/" class="text-secondary underline-offset-4 hover:underline">Ana sayfa</a>
+          </li>
+          <li aria-hidden="true">/</li>
+          <li class="text-on-surface">Mesken çatı GES</li>
+        </ol>
+      </nav>
+
+      <h1 class="font-headline text-3xl font-bold tracking-tight text-primary md:text-4xl">
+        İzmir ve Ege’de mesken çatı GES kurulumu
+      </h1>
+      <p class="mt-4 text-lg leading-relaxed text-on-surface-variant">
+        Konut ve mesken tipi çatılarda güneş enerjisi; doğru inverter seçimi, kablo kesitleri, yapısal uygunluk ve
+        bağlantı anlaşması ile bir bütündür. Solut Enerji olarak İzmir merkezli ekibimizle Ege bölgesinde çatı GES
+        projelerinde keşiften devreye almaya kadar mühendislik disipliniyle çalışıyoruz.
+      </p>
+
+      <h2 class="mt-12 font-headline text-2xl font-bold text-primary">Neden ayrı bir hizmet sayfası?</h2>
+      <p class="mt-4 leading-relaxed text-on-surface-variant">
+        Arama motorlarında “İzmir güneş enerjisi kurulumu” veya “ege çatı ges” gibi niyetler, net bir başlık ve
+        sayfaya özgü içerik bekler. Bu sayfa, mesken çatı GES’e özgü süreci, beklentileri ve sık sorulan soruları
+        tek yerde toplar; ana sayfadaki özet bölüm ise genel marka deneyimini sürdürür.
+      </p>
+
+      <h2 class="mt-10 font-headline text-2xl font-bold text-primary">Süreç nasıl işler?</h2>
+      <ol class="mt-4 list-decimal space-y-3 ps-5 leading-relaxed text-on-surface-variant">
+        <li>
+          <strong class="text-on-surface">Keşif ve ölçüm:</strong> Çatı eğimi, gölgelenme, taşıyıcı uygunluğu ve
+          olası panel alanı değerlendirilir.
+        </li>
+        <li>
+          <strong class="text-on-surface">Mühendislik ve ürün seçimi:</strong> Modül, inverter ve koruma grubu;
+          Türkiye iklimi ve mesken kullanım profiline uygun eşleştirilir.
+        </li>
+        <li>
+          <strong class="text-on-surface">Başvuru ve kurulum:</strong> Dağıtım şirketi süreçleri ile uyumlu teknik
+          dokümantasyon; montaj ve devreye alma testleri.
+        </li>
+        <li>
+          <strong class="text-on-surface">Teslim ve izleme:</strong> Devreye alma raporu, kullanıcı bilgilendirmesi;
+          istenirse izleme entegrasyonu.
+        </li>
+      </ol>
+
+      <h2 class="mt-10 font-headline text-2xl font-bold text-primary">İzmir ve Ege’de saha deneyimi</h2>
+      <p class="mt-4 leading-relaxed text-on-surface-variant">
+        Ege ikliminde yüksek güneşlenme, tuzlu hava ve yaz aylarında aşırı sıcaklar ekipman seçimini doğrudan etkiler.
+        Bu nedenle kurulum sadece panel dizilimi değil; kablolama, topraklama, AC/DC koruma ve uzun ömürlü bağlantı
+        elemanlarıyla bütünleşik düşünülür.
+      </p>
+
+      <p class="mt-6">
+        <a
+          href="/#iletisim"
+          class="inline-flex min-h-[44px] items-center rounded-md bg-primary px-5 py-2.5 text-sm font-semibold text-on-primary transition-opacity hover:opacity-90"
+        >
+          Mesken GES için iletişime geçin
+        </a>
+        <a
+          href="/#gunes-enerjisi"
+          class="ms-4 inline-flex min-h-[44px] items-center text-sm font-semibold text-secondary underline-offset-4 hover:underline"
+        >
+          Ana sayfadaki görsel özete dön
+        </a>
+      </p>
+
+      <section class="mt-16 border-t border-slate-200 pt-12" aria-labelledby="sss-mesken">
+        <h2 id="sss-mesken" class="font-headline text-2xl font-bold text-primary">
+          Sık sorulan sorular
+        </h2>
+        <dl class="mt-8 space-y-8">
+          {faqs.map((item) => (
+            <div>
+              <dt class="font-semibold text-on-surface">{item.question}</dt>
+              <dd class="mt-2 leading-relaxed text-on-surface-variant">{item.answer}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+    </article>
+  </main>
+</BaseLayout>

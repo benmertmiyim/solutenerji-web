@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { siteConfig } from '../site.config';
+---
+<BaseLayout
+  title="Gizlilik Politikası | Solut Enerji"
+  description="Solut Enerji gizlilik politikası ve kişisel verilerin korunması hakkında bilgilendirme."
+>
+  <article class="mx-auto max-w-3xl px-6 pb-24 pt-28">
+    <h1 class="mb-6 font-headline text-3xl font-extrabold text-primary md:text-4xl">Gizlilik Politikası</h1>
+    <p class="mb-8 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-950">
+      <strong>Yasal uyarı:</strong> Bu metin örnek şablon niteliğindedir. Yürürlükteki mevzuata ve şirketinizin veri
+      işleme pratiklerine uygun olarak mutlaka hukuk danışmanlığı ile gözden geçirilmelidir.
+    </p>
+    <div class="space-y-8 text-sm leading-relaxed text-on-surface-variant">
+      <section>
+        <h2 class="mb-3 font-headline text-xl font-bold text-primary">1. Veri sorumlusu</h2>
+        <p>
+          Bu web sitesi <strong>{siteConfig.companyLegalName}</strong> (&quot;Şirket&quot;) tarafından işletilmektedir.
+          İletişim: <a class="font-medium text-primary underline hover:no-underline" href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>.
+        </p>
+      </section>
+      <section>
+        <h2 class="mb-3 font-headline text-xl font-bold text-primary">2. Toplanan veriler</h2>
+        <p>
+          Web sitemiz üzerinden iletişim formu, çerezler ve benzeri teknolojiler aracılığıyla kimlik, iletişim ve kullanım
+          verileri işlenebilir. Hangi verilerin işlendiği, işlemenin amacı ve hukuki sebebi KVKK aydınlatma metnimizde
+          ayrıntılı olarak açıklanır.
+        </p>
+      </section>
+      <section>
+        <h2 class="mb-3 font-headline text-xl font-bold text-primary">3. İşleme amaçları</h2>
+        <p>
+          Veriler; taleplerinize yanıt vermek, sözleşme süreçlerini yürütmek, yasal yükümlülükleri yerine getirmek ve
+          meşru menfaatler çerçevesinde hizmet kalitesini geliştirmek amacıyla işlenebilir.
+        </p>
+      </section>
+      <section>
+        <h2 class="mb-3 font-headline text-xl font-bold text-primary">4. Saklama süresi</h2>
+        <p>
+          Kişisel veriler, işleme amacının gerektirdiği süre ve yasal zamanaşımı süreleri ile sınırlı olarak saklanır;
+          süre sonunda silinir, yok edilir veya anonim hale getirilir.
+        </p>
+      </section>
+      <section>
+        <h2 class="mb-3 font-headline text-xl font-bold text-primary">5. Haklarınız</h2>
+        <p>
+          KVKK kapsamında veri sorumlusuna başvurarak kişisel verilerinizle ilgili haklarınızı kullanabilirsiniz. Ayrıntılar
+          için <a class="font-medium text-primary underline hover:no-underline" href="/kvkk-aydinlatma">KVKK Aydınlatma Metni</a> sayfamıza bakınız.
+        </p>
+      </section>
+      <section>
+        <h2 class="mb-3 font-headline text-xl font-bold text-primary">6. Güncellemeler</h2>
+        <p>
+          Bu politika zaman zaman güncellenebilir. Güncel sürüm her zaman bu sayfada yayımlanır.
+        </p>
+      </section>
+    </div>
+  </article>
+</BaseLayout>

@@ -1,18 +1,18 @@
 ---
 const navLinks = [
-  { href: '/#ana-sayfa', label: 'Ana Sayfa' },
-  { href: '/#gunes-enerjisi', label: 'Güneş Enerjisi' },
-  { href: '/#ev-sarj-ve-danismanlik', label: 'EV Şarj' },
-  { href: '/#danismanlik', label: 'Danışmanlık' },
-  { href: '/#iletisim', label: 'İletişim' },
-];
+  { href: '/#ana-sayfa', label: 'Ana Sayfa', anchor: true },
+  { href: '/hizmetler/mesken-cati-ges/', label: 'Güneş Enerjisi', anchor: false },
+  { href: '/hizmetler/ev-sarj-istasyonu/', label: 'EV Şarj', anchor: false },
+  { href: '/hizmetler/ges-danismanlik/', label: 'Danışmanlık', anchor: false },
+  { href: '/#iletisim', label: 'İletişim', anchor: true },
+] as const;
 ---
-<nav class="fixed top-0 z-50 w-full border-b border-slate-100 bg-white/80 shadow-sm backdrop-blur-md dark:border-slate-800 dark:bg-slate-950/80 dark:shadow-none">
+<nav class="fixed top-0 z-50 w-full border-b border-slate-100 bg-white/80 shadow-sm backdrop-blur-md">
   <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
-    <a href="/#ana-sayfa" aria-label="Solut Enerji" class="flex items-center">
+    <a href="/#ana-sayfa" aria-label="Solut Enerji" class="flex min-w-0 max-w-[65%] items-center sm:max-w-none">
       <img
         alt="Solut Enerji Logo"
-        class="h-16 w-auto origin-left scale-[1.2] transform-gpu md:scale-[1.5]"
+        class="h-12 w-auto origin-left transform-gpu sm:h-14 md:h-16 md:scale-[1.5]"
         src="/assets/logo.svg"
       >
     </a>
@@ -22,16 +22,17 @@ const navLinks = [
       {navLinks.map((link) => (
         <a
           href={link.href}
-          data-anchor-link
-          data-active="false"
-          class="mx-4 border-b-2 border-transparent pb-1 text-slate-600 transition-colors hover:text-blue-900 dark:text-slate-400 dark:hover:text-white"
+          {...(link.anchor
+            ? { 'data-anchor-link': true, 'data-active': 'false' }
+            : {})}
+          class="mx-4 border-b-2 border-transparent pb-1 text-slate-600 transition-colors hover:text-primary"
         >
           {link.label}
         </a>
       ))}
     </div>
 
-    <div class="flex items-center gap-3">
+    <div class="relative z-10 flex shrink-0 items-center gap-3">
       <a
         href="/#iletisim"
         data-service="diger"
@@ -40,26 +41,34 @@ const navLinks = [
         Teklif Al
       </a>
 
-      <!-- Hamburger Button -->
       <button
         id="mobile-menu-btn"
         type="button"
-        aria-label="Menüyü aç"
+        aria-controls="mobile-menu"
+        aria-haspopup="dialog"
         aria-expanded="false"
-        class="flex h-10 w-10 items-center justify-center rounded-lg text-slate-700 transition-colors hover:bg-slate-100 md:hidden"
+        aria-label="Menüyü aç"
+        class="relative inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-slate-700 transition-colors hover:bg-slate-100 md:hidden"
       >
-        <span id="hamburger-icon" class="material-symbols-outlined text-2xl">menu</span>
-        <span id="close-icon" class="material-symbols-outlined hidden text-2xl">close</span>
+        <span
+          class="material-symbols-outlined pointer-events-none absolute left-1/2 top-1/2 block -translate-x-1/2 -translate-y-1/2 text-2xl leading-none"
+          style="font-size: 1.5rem; width: 1.5rem; height: 1.5rem;"
+          aria-hidden="true"
+        >
+          menu
+        </span>
       </button>
     </div>
   </div>
 
-  <!-- Mobile Menu Drawer -->
   <div
     id="mobile-menu"
     class="hidden border-t border-slate-100 bg-white/95 backdrop-blur-lg md:hidden"
+    role="dialog"
+    aria-modal="false"
+    aria-label="Mobil menü"
   >
-    <div class="mx-auto max-w-7xl space-y-1 px-6 pb-6 pt-4">
+    <div class="mobile-menu-panel mx-auto max-w-7xl space-y-1 px-6 pb-6 pt-4">
       {navLinks.map((link) => (
         <a
           href={link.href}
@@ -84,36 +93,97 @@ const navLinks = [
 </nav>
 
 <script is:inline>
-  const menuBtn = document.getElementById('mobile-menu-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const hamburgerIcon = document.getElementById('hamburger-icon');
-  const closeIcon = document.getElementById('close-icon');
+  (function () {
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuPanel = mobileMenu?.querySelector('.mobile-menu-panel');
 
-  if (menuBtn && mobileMenu && hamburgerIcon && closeIcon) {
-    menuBtn.addEventListener('click', () => {
-      const isOpen = !mobileMenu.classList.contains('hidden');
+    if (!menuBtn || !mobileMenu || !menuPanel) return;
 
-      if (isOpen) {
-        mobileMenu.classList.add('hidden');
-        hamburgerIcon.classList.remove('hidden');
-        closeIcon.classList.add('hidden');
-        menuBtn.setAttribute('aria-expanded', 'false');
-      } else {
+    function getFocusable() {
+      return Array.from(
+        menuPanel.querySelectorAll('a[href], button:not([disabled])'),
+      ).filter(function (el) {
+        return el instanceof HTMLElement && el.offsetParent !== null;
+      });
+    }
+
+    function setOpen(open) {
+      if (open) {
         mobileMenu.classList.remove('hidden');
-        hamburgerIcon.classList.add('hidden');
-        closeIcon.classList.remove('hidden');
         menuBtn.setAttribute('aria-expanded', 'true');
+        menuBtn.setAttribute('aria-label', 'Menüyü kapat');
+        mobileMenu.setAttribute('aria-modal', 'true');
+        document.body.style.overflow = 'hidden';
+        const focusable = getFocusable();
+        if (focusable[0] instanceof HTMLElement) focusable[0].focus();
+      } else {
+        mobileMenu.classList.add('hidden');
+        menuBtn.setAttribute('aria-expanded', 'false');
+        menuBtn.setAttribute('aria-label', 'Menüyü aç');
+        mobileMenu.setAttribute('aria-modal', 'false');
+        document.body.style.overflow = '';
+        menuBtn.focus();
+      }
+    }
+
+    function isOpen() {
+      return !mobileMenu.classList.contains('hidden');
+    }
+
+    function onDocumentKeydown(e) {
+      if (!isOpen()) return;
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        setOpen(false);
+        document.removeEventListener('keydown', onDocumentKeydown);
+        return;
+      }
+      if (e.key !== 'Tab') return;
+      const focusable = getFocusable();
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      const active = document.activeElement;
+      if (e.shiftKey) {
+        if (active === first) {
+          e.preventDefault();
+          last.focus();
+        }
+      } else if (active === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+
+    function onDocumentPointerDown(e) {
+      if (!isOpen()) return;
+      const t = e.target;
+      if (!(t instanceof Node)) return;
+      if (mobileMenu.contains(t) || menuBtn.contains(t)) return;
+      setOpen(false);
+      document.removeEventListener('pointerdown', onDocumentPointerDown, true);
+      document.removeEventListener('keydown', onDocumentKeydown);
+    }
+
+    menuBtn.addEventListener('click', function () {
+      if (isOpen()) {
+        setOpen(false);
+        document.removeEventListener('pointerdown', onDocumentPointerDown, true);
+        document.removeEventListener('keydown', onDocumentKeydown);
+      } else {
+        setOpen(true);
+        document.addEventListener('pointerdown', onDocumentPointerDown, true);
+        document.addEventListener('keydown', onDocumentKeydown);
       }
     });
 
-    // Close menu when a link is clicked
-    document.querySelectorAll('[data-mobile-link]').forEach((link) => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-        hamburgerIcon.classList.remove('hidden');
-        closeIcon.classList.add('hidden');
-        menuBtn.setAttribute('aria-expanded', 'false');
+    document.querySelectorAll('[data-mobile-link]').forEach(function (link) {
+      link.addEventListener('click', function () {
+        setOpen(false);
+        document.removeEventListener('pointerdown', onDocumentPointerDown, true);
+        document.removeEventListener('keydown', onDocumentKeydown);
       });
     });
-  }
+  })();
 </script>

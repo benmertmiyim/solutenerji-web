@@ -1,0 +1,49 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  /** public/ köküne göre yol, örn. /og-default.jpg */
+  image?: string;
+  noindex?: boolean;
+  /** Virgülle ayrılmış, kısa ve doğal anahtar kelimeler */
+  keywords?: string;
+  ogType?: 'website' | 'article';
+}
+
+const {
+  title,
+  description = 'Güneş enerjisi ve EV şarj çözümleri.',
+  image = '/og-default.jpg',
+  noindex = false,
+  keywords,
+  ogType = 'website',
+} = Astro.props;
+
+const site = Astro.site ?? new URL('https://solutenerji.com');
+const canonical = new URL(Astro.url.pathname, site);
+const ogImageUrl = new URL(image.startsWith('/') ? image : `/${image}`, site).href;
+const googleVerify = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION?.trim();
+const twitterSite = import.meta.env.PUBLIC_TWITTER_SITE?.trim();
+---
+<title>{title}</title>
+<meta name="description" content={description} />
+{keywords ? <meta name="keywords" content={keywords} /> : null}
+<link rel="canonical" href={canonical.href} />
+{googleVerify ? <meta name="google-site-verification" content={googleVerify} /> : null}
+{noindex ? (
+  <meta name="robots" content="noindex,follow" />
+) : (
+  <meta name="robots" content="index,follow" />
+)}
+<meta property="og:site_name" content="Solut Enerji" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical.href} />
+<meta property="og:type" content={ogType} />
+<meta property="og:image" content={ogImageUrl} />
+<meta property="og:locale" content="tr_TR" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImageUrl} />
+{twitterSite ? <meta name="twitter:site" content={twitterSite} /> : null}

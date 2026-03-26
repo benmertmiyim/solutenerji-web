@@ -1,10 +1,19 @@
+---
+import { siteConfig } from '../../site.config';
+import { getFormspreeAction } from '../../lib/formspree';
+
+const formAction = getFormspreeAction();
+const thanksUrl = Astro.site ? new URL('/tesekkurler', Astro.site).href : '/tesekkurler';
+---
 <section id="iletisim" data-scroll-section class="section-anchor">
   <section class="relative flex min-h-[320px] items-center overflow-hidden bg-primary pb-0 pt-20">
     <div class="absolute inset-0 z-0 opacity-20">
       <img
         class="h-full w-full object-cover"
-        alt="Mühendisler çalışırken"
-        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJmz9PyFKBk46eG2SXqAshAHV1O56k44mvhK5_EH33ukaj4pdQzul0_Z5IvdEO0nwIqbKn7tP2dx1q-1XpdRprMe3z3Gj14qP1RDg0iWsY71Q-CHtHGM3YrbvQ9Ld3dLieSwL8KbYVkkhLvdCrciv0pqK6-BbDqCyIAeukZXMPNHmjVHxwuYB1mLGo6aXTsRMemgh4NCD18tmIQIoI6AVlW-2isUTx3GDTaplCSKuyk-BspToHHAxHSYrTOiwBu166XL6GlByvdiA"
+        alt="Mühendislik ve enerji projeleri üzerinde çalışan ekip"
+        src="/assets/contact-hero.jpg"
+        width="1920"
+        height="640"
       />
     </div>
     <div class="relative z-10 mx-auto w-full max-w-7xl px-6 py-20">
@@ -37,7 +46,7 @@
             </div>
             <div>
               <div class="mb-1 text-xs font-bold uppercase tracking-widest text-secondary">Adres</div>
-              <div class="font-semibold text-on-surface">İzmir, Türkiye</div>
+              <div class="font-semibold text-on-surface">{siteConfig.address}</div>
             </div>
           </div>
 
@@ -48,10 +57,10 @@
             <div>
               <div class="mb-1 text-xs font-bold uppercase tracking-widest text-secondary">E-Posta</div>
               <a
-                href="mailto:iletisim@solutenerji.com"
+                href={`mailto:${siteConfig.email}`}
                 class="font-semibold text-primary transition-colors hover:text-secondary"
               >
-                iletisim@solutenerji.com
+                {siteConfig.email}
               </a>
             </div>
           </div>
@@ -103,56 +112,77 @@
         <h4 class="mb-2 font-headline text-2xl font-bold text-primary">Ücretsiz Teklif Alın</h4>
         <p class="mb-8 text-sm text-on-surface-variant">Formu doldurun, en kısa sürede size dönelim.</p>
 
-        <form action="https://formspree.io/f/FORM_ID_HERE" method="POST" class="space-y-6">
+        {!formAction && (
+          <div
+            role="alert"
+            class="mb-6 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-950"
+          >
+            İletişim formu henüz yapılandırılmadı. Canlı ortamda <code class="rounded bg-amber-100 px-1">PUBLIC_FORMSPREE_FORM_ID</code> ortam değişkenini ayarlayın.
+          </div>
+        )}
+
+        <form
+          data-contact-form
+          action={formAction ?? undefined}
+          method="POST"
+          class="space-y-6"
+          novalidate
+        >
           <input type="hidden" name="_subject" value="Solut Enerji - Yeni İletişim Talebi" />
+          {formAction && <input type="hidden" name="_next" value={thanksUrl} />}
+          <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
           <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
             <div class="space-y-2">
-              <label class="font-label text-xs font-bold uppercase tracking-wider text-on-surface-variant">
+              <label class="font-label text-xs font-bold uppercase tracking-wider text-on-surface-variant" for="contact-ad">
                 Ad Soyad *
               </label>
               <input
+                id="contact-ad"
                 name="ad_soyad"
                 type="text"
                 required
                 placeholder="Ad Soyad"
-                class="placeholder-outline w-full border-0 border-b border-outline-variant bg-transparent py-3 text-sm text-on-surface transition-colors focus:border-primary focus:ring-0"
+                class="placeholder-outline w-full rounded-sm border-0 border-b border-outline-variant bg-transparent py-3 text-sm text-on-surface transition-colors focus:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-surface-container-lowest"
               />
             </div>
             <div class="space-y-2">
-              <label class="font-label text-xs font-bold uppercase tracking-wider text-on-surface-variant">
+              <label class="font-label text-xs font-bold uppercase tracking-wider text-on-surface-variant" for="contact-tel">
                 Telefon
               </label>
               <input
+                id="contact-tel"
                 name="telefon"
                 type="tel"
                 placeholder="+90 5xx xxx xx xx"
-                class="placeholder-outline w-full border-0 border-b border-outline-variant bg-transparent py-3 text-sm text-on-surface transition-colors focus:border-primary focus:ring-0"
+                class="placeholder-outline w-full rounded-sm border-0 border-b border-outline-variant bg-transparent py-3 text-sm text-on-surface transition-colors focus:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-surface-container-lowest"
               />
             </div>
           </div>
 
           <div class="space-y-2">
-            <label class="font-label text-xs font-bold uppercase tracking-wider text-on-surface-variant">
+            <label class="font-label text-xs font-bold uppercase tracking-wider text-on-surface-variant" for="contact-email">
               E-Posta Adresi *
             </label>
             <input
+              id="contact-email"
               name="email"
               type="email"
               required
               placeholder="email@adresiniz.com"
-              class="placeholder-outline w-full border-0 border-b border-outline-variant bg-transparent py-3 text-sm text-on-surface transition-colors focus:border-primary focus:ring-0"
+              class="placeholder-outline w-full rounded-sm border-0 border-b border-outline-variant bg-transparent py-3 text-sm text-on-surface transition-colors focus:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-surface-container-lowest"
             />
           </div>
 
           <div class="space-y-2">
-            <label class="font-label text-xs font-bold uppercase tracking-wider text-on-surface-variant">
+            <label class="font-label text-xs font-bold uppercase tracking-wider text-on-surface-variant" for="contact-hizmet">
               Hizmet Türü
             </label>
             <select
+              id="contact-hizmet"
               name="hizmet_turu"
               data-service-select
-              class="w-full border-0 border-b border-outline-variant bg-transparent py-3 text-sm text-on-surface transition-colors focus:border-primary focus:ring-0"
+              class="w-full rounded-sm border-0 border-b border-outline-variant bg-transparent py-3 text-sm text-on-surface transition-colors focus:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-surface-container-lowest"
             >
               <option value="">Seçiniz...</option>
               <option value="mesken_ges">Mesken Çatı GES Kurulumu</option>
@@ -163,32 +193,73 @@
           </div>
 
           <div class="space-y-2">
-            <label class="font-label text-xs font-bold uppercase tracking-wider text-on-surface-variant">
+            <label class="font-label text-xs font-bold uppercase tracking-wider text-on-surface-variant" for="contact-mesaj">
               Mesajınız *
             </label>
             <textarea
+              id="contact-mesaj"
               name="mesaj"
               required
               rows="4"
               placeholder="Projeniz hakkında kısaca bilgi verin..."
-              class="placeholder-outline w-full resize-none border-0 border-b border-outline-variant bg-transparent py-3 text-sm text-on-surface transition-colors focus:border-primary focus:ring-0"
+              class="placeholder-outline w-full resize-none rounded-sm border-0 border-b border-outline-variant bg-transparent py-3 text-sm text-on-surface transition-colors focus:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-surface-container-lowest"
             ></textarea>
           </div>
 
           <div class="pt-2">
             <button
+              id="contact-submit-btn"
               type="submit"
-              class="flex w-full items-center justify-center gap-2 rounded-md bg-secondary-container py-4 font-headline font-extrabold text-on-secondary-fixed transition-all hover:opacity-90 active:scale-95"
+              disabled={!formAction}
+              class="flex w-full items-center justify-center gap-2 rounded-md bg-secondary-container py-4 font-headline font-extrabold text-on-secondary-fixed transition-all hover:opacity-90 active:scale-95 disabled:cursor-not-allowed disabled:opacity-50"
             >
-              <span>Mesajı Gönder</span>
-              <span class="material-symbols-outlined">send</span>
+              <span id="contact-submit-label">Mesajı Gönder</span>
+              <span class="material-symbols-outlined" aria-hidden="true">send</span>
             </button>
           </div>
           <p class="text-center text-[11px] text-on-surface-variant">
-            Gönder butonuna basarak <a href="#" class="underline">Gizlilik Politikamızı</a> kabul etmiş olursunuz.
+            Gönder butonuna basarak{' '}
+            <a href="/gizlilik-politikasi" class="underline hover:text-primary">Gizlilik Politikamızı</a> kabul etmiş olursunuz.
           </p>
         </form>
       </div>
     </div>
   </section>
 </section>
+
+<script is:inline>
+  (function () {
+    const form = document.querySelector('[data-contact-form]');
+    if (!(form instanceof HTMLFormElement) || !form.action) return;
+
+    const btn = document.getElementById('contact-submit-btn');
+    const label = document.getElementById('contact-submit-label');
+
+    function wireField(id, emptyMsg, typeMismatchMsg) {
+      const el = document.getElementById(id);
+      if (!(el instanceof HTMLInputElement || el instanceof HTMLTextAreaElement)) return;
+      el.addEventListener('input', function () {
+        el.setCustomValidity('');
+      });
+      el.addEventListener('invalid', function () {
+        if (el.validity.valueMissing) el.setCustomValidity(emptyMsg);
+        else if (el.type === 'email' && el.validity.typeMismatch && typeMismatchMsg)
+          el.setCustomValidity(typeMismatchMsg);
+        else el.setCustomValidity('');
+      });
+    }
+
+    wireField('contact-ad', 'Lütfen ad ve soyadınızı girin.');
+    wireField('contact-email', 'Lütfen e-posta adresinizi girin.', 'Lütfen geçerli bir e-posta adresi girin.');
+    wireField('contact-mesaj', 'Lütfen mesajınızı yazın.');
+
+    form.addEventListener('submit', function () {
+      if (!form.reportValidity()) return;
+      if (btn instanceof HTMLButtonElement) {
+        btn.disabled = true;
+        btn.setAttribute('aria-busy', 'true');
+      }
+      if (label) label.textContent = 'Gönderiliyor…';
+    });
+  })();
+</script>

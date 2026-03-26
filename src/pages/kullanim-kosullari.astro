@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { siteConfig } from '../site.config';
+---
+<BaseLayout
+  title="Kullanım Koşulları | Solut Enerji"
+  description="Solut Enerji web sitesi kullanım koşulları ve sorumluluk sınırları."
+>
+  <article class="mx-auto max-w-3xl px-6 pb-24 pt-28">
+    <h1 class="mb-6 font-headline text-3xl font-extrabold text-primary md:text-4xl">Kullanım Koşulları</h1>
+    <p class="mb-8 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-950">
+      <strong>Yasal uyarı:</strong> Bu metin örnek şablon niteliğindedir. Şirketinize ve hizmetlerinize göre hukuk
+      danışmanlığı ile güncellenmelidir.
+    </p>
+    <div class="space-y-8 text-sm leading-relaxed text-on-surface-variant">
+      <section>
+        <h2 class="mb-3 font-headline text-xl font-bold text-primary">1. Kabul</h2>
+        <p>
+          Bu web sitesine erişerek ve kullanarak aşağıdaki koşulları okuduğunuzu ve anladığınızı kabul etmiş olursunuz.
+          Koşulları kabul etmiyorsanız lütfen siteyi kullanmayınız.
+        </p>
+      </section>
+      <section>
+        <h2 class="mb-3 font-headline text-xl font-bold text-primary">2. Site içeriği</h2>
+        <p>
+          Sitede yer alan bilgiler genel bilgilendirme amaçlıdır. Teknik özellikler, fiyatlar veya süreçler önceden
+          haber verilmeksizin değişebilir. Bağlayıcı teklif veya sözleşme hükümleri yalnızca yazılı olarak
+          kararlaştırıldığında geçerlidir.
+        </p>
+      </section>
+      <section>
+        <h2 class="mb-3 font-headline text-xl font-bold text-primary">3. Fikri mülkiyet</h2>
+        <p>
+          Site üzerindeki metin, görsel, logo ve tasarım unsurları {siteConfig.companyLegalName} veya lisans veren
+          üçüncü taraflara aittir; izinsiz kopyalanamaz, çoğaltılamaz veya ticari amaçla kullanılamaz.
+        </p>
+      </section>
+      <section>
+        <h2 class="mb-3 font-headline text-xl font-bold text-primary">4. Sorumluluk sınırı</h2>
+        <p>
+          Site &quot;olduğu gibi&quot; sunulur. Mümkün olan ölçüde doğru ve güncel bilgi sağlamaya çalışsak da hatalardan
+          veya kesintilerden kaynaklanan doğrudan / dolaylı zararlardan sorumluluk kabul edilmez. Yasal olarak
+          muaf tutulamayan haller saklıdır.
+        </p>
+      </section>
+      <section>
+        <h2 class="mb-3 font-headline text-xl font-bold text-primary">5. Üçüncü taraf bağlantılar</h2>
+        <p>
+          Sitede yer alan harici bağlantılar yalnızca kolaylık içindir. Üçüncü taraf sitelerinin içeriğinden veya
+          gizlilik uygulamalarından sorumlu değiliz.
+        </p>
+      </section>
+      <section>
+        <h2 class="mb-3 font-headline text-xl font-bold text-primary">6. Uygulanacak hukuk</h2>
+        <p>
+          Bu koşullar Türkiye Cumhuriyeti kanunlarına tabidir. Uyuşmazlıklarda Türkiye mahkemeleri ve icra daireleri
+          yetkilidir (yasal zorunluluklar saklı kalmak kaydıyla).
+        </p>
+      </section>
+    </div>
+  </article>
+</BaseLayout>

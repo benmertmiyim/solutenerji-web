@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { siteConfig } from '../site.config';
+---
+<BaseLayout
+  title="KVKK Aydınlatma Metni | Solut Enerji"
+  description="6698 sayılı Kişisel Verilerin Korunması Kanunu kapsamında aydınlatma metni."
+>
+  <article class="mx-auto max-w-3xl px-6 pb-24 pt-28">
+    <h1 class="mb-6 font-headline text-3xl font-extrabold text-primary md:text-4xl">KVKK Aydınlatma Metni</h1>
+    <p class="mb-8 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-950">
+      <strong>Yasal uyarı:</strong> Bu metin örnek şablon niteliğindedir. Veri sorumlusu unvanı, işleme faaliyetleri,
+      aktarım alıcıları ve saklama süreleri şirketinize özel olarak hukuk danışmanlığı ile netleştirilmelidir.
+    </p>
+    <div class="space-y-8 text-sm leading-relaxed text-on-surface-variant">
+      <section>
+        <h2 class="mb-3 font-headline text-xl font-bold text-primary">Veri sorumlusu</h2>
+        <p>
+          6698 sayılı Kişisel Verilerin Korunması Kanunu (&quot;KVKK&quot;) uyarınca veri sorumlusu{' '}
+          <strong>{siteConfig.companyLegalName}</strong>’dir.
+        </p>
+        <p class="mt-2">
+          Adres: {siteConfig.address}<br />
+          E-posta:{' '}
+          <a class="font-medium text-primary underline hover:no-underline" href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+        </p>
+      </section>
+      <section>
+        <h2 class="mb-3 font-headline text-xl font-bold text-primary">İşlenen kişisel veriler</h2>
+        <p>
+          Web sitesi ve iletişim kanalları aracılığıyla; ad-soyad, e-posta, telefon, mesaj içeriği, IP adresi, çerez
+          verileri ve benzeri kimlik / iletişim / işlem güvenliği verileri işlenebilir.
+        </p>
+      </section>
+      <section>
+        <h2 class="mb-3 font-headline text-xl font-bold text-primary">İşleme amaçları ve hukuki sebepler</h2>
+        <p>
+          Verileriniz; talebinizi yanıtlamak (sözleşmenin kurulması veya ifası, meşru menfaat), yasal yükümlülükleri yerine
+          getirmek, hizmet sunmak ve iletişimi sürdürmek amaçlarıyla KVKK’nın 5. ve 6. maddelerinde düzenlenen hukuki
+          sebeplere dayanılarak işlenir.
+        </p>
+      </section>
+      <section>
+        <h2 class="mb-3 font-headline text-xl font-bold text-primary">Aktarım</h2>
+        <p>
+          Kişisel verileriniz, amaçla sınırlı olarak iş ortaklarına, hizmet sağlayıcılara (ör. form ve e-posta
+          altyapısı) ve yetkili kamu kurumlarına mevzuatın izin verdiği ölçüde aktarılabilir.
+        </p>
+      </section>
+      <section>
+        <h2 class="mb-3 font-headline text-xl font-bold text-primary">KVKK kapsamındaki haklarınız</h2>
+        <p>
+          KVKK’nın 11. maddesi uyarınca; verilerinizin işlenip işlenmediğini öğrenme, düzeltilmesini veya silinmesini
+          isteme, işlemenin amacına uygun kullanılıp kullanılmadığını öğrenme, üçüncü kişilere aktarılanları bilme,
+          zararın giderilmesini talep etme haklarına sahipsiniz.
+        </p>
+        <p class="mt-2">
+          Başvurularınızı yukarıdaki iletişim kanalları üzerinden iletebilirsiniz.
+        </p>
+      </section>
+    </div>
+  </article>
+</BaseLayout>

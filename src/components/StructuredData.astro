@@ -1,0 +1,14 @@
+---
+/**
+ * JSON-LD — sayfa başına bir veya birden fazla şema nesnesi.
+ */
+interface Props {
+  schema: Record<string, unknown> | Record<string, unknown>[];
+}
+
+const { schema } = Astro.props;
+const blocks = Array.isArray(schema) ? schema : [schema];
+---
+{blocks.map((s) => (
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(s)} />
+))}

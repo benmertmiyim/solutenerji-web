@@ -1,13 +1,18 @@
 ---
+/**
+ * Eski URL’ler için: kanonik hedef + noindex + anında yönlendirme.
+ * Netlify _redirects 301 ile birlikte kullanılır; statik host yedekleri için.
+ */
 interface Props {
+  canonicalPath: string;
   description: string;
-  target: string;
   title: string;
 }
 
-const { description, target, title } = Astro.props;
+const { canonicalPath, description, title } = Astro.props;
 const site = Astro.site ?? new URL('https://solutenerji.com');
-const canonicalHome = new URL('/', site).href;
+const canonical = new URL(canonicalPath.replace(/^\//, ''), site).href;
+const target = canonical;
 ---
 <!DOCTYPE html>
 <html lang="tr">
@@ -17,7 +22,7 @@ const canonicalHome = new URL('/', site).href;
   <title>{title}</title>
   <meta name="description" content={description} />
   <meta name="robots" content="noindex,follow" />
-  <link rel="canonical" href={canonicalHome} />
+  <link rel="canonical" href={canonical} />
   <meta http-equiv="refresh" content={`0;url=${target}`} />
 </head>
 <body>
