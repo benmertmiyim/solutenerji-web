@@ -3,7 +3,6 @@ import { siteConfig } from '../../site.config';
 import { getFormspreeAction } from '../../lib/formspree';
 
 const formAction = getFormspreeAction();
-const thanksUrl = Astro.site ? new URL('/tesekkurler', Astro.site).href : '/tesekkurler';
 ---
 <section id="iletisim" data-scroll-section class="section-anchor">
   <section class="relative flex min-h-[320px] items-center overflow-hidden bg-primary pb-0 pt-20">
@@ -129,7 +128,6 @@ const thanksUrl = Astro.site ? new URL('/tesekkurler', Astro.site).href : '/tese
           novalidate
         >
           <input type="hidden" name="_subject" value="Solut Enerji - Yeni İletişim Talebi" />
-          {formAction && <input type="hidden" name="_next" value={thanksUrl} />}
           <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
           <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -206,6 +204,13 @@ const thanksUrl = Astro.site ? new URL('/tesekkurler', Astro.site).href : '/tese
             ></textarea>
           </div>
 
+          <div
+            id="contact-form-error"
+            role="alert"
+            hidden
+            class="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-950"
+          />
+
           <div class="pt-2">
             <button
               id="contact-submit-btn"
@@ -234,6 +239,30 @@ const thanksUrl = Astro.site ? new URL('/tesekkurler', Astro.site).href : '/tese
 
     const btn = document.getElementById('contact-submit-btn');
     const label = document.getElementById('contact-submit-label');
+    const errBox = document.getElementById('contact-form-error');
+    const thanksPath = '/tesekkurler/';
+
+    function hideError() {
+      if (errBox) {
+        errBox.textContent = '';
+        errBox.hidden = true;
+      }
+    }
+
+    function showError(msg) {
+      if (errBox) {
+        errBox.textContent = msg;
+        errBox.hidden = false;
+      }
+    }
+
+    function setBusy(busy) {
+      if (btn instanceof HTMLButtonElement) {
+        btn.disabled = busy;
+        btn.setAttribute('aria-busy', busy ? 'true' : 'false');
+      }
+      if (label) label.textContent = busy ? 'Gönderiliyor…' : 'Mesajı Gönder';
+    }
 
     function wireField(id, emptyMsg, typeMismatchMsg) {
       const el = document.getElementById(id);
@@ -253,13 +282,49 @@ const thanksUrl = Astro.site ? new URL('/tesekkurler', Astro.site).href : '/tese
     wireField('contact-email', 'Lütfen e-posta adresinizi girin.', 'Lütfen geçerli bir e-posta adresi girin.');
     wireField('contact-mesaj', 'Lütfen mesajınızı yazın.');
 
-    form.addEventListener('submit', function () {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      hideError();
       if (!form.reportValidity()) return;
-      if (btn instanceof HTMLButtonElement) {
-        btn.disabled = true;
-        btn.setAttribute('aria-busy', 'true');
-      }
-      if (label) label.textContent = 'Gönderiliyor…';
+
+      setBusy(true);
+
+      var fd = new FormData(form);
+      fetch(form.action, {
+        method: 'POST',
+        body: fd,
+        headers: { Accept: 'application/json' },
+      })
+        .then(function (res) {
+          return res.text().then(function (text) {
+            var data = {};
+            if (text) {
+              try {
+                data = JSON.parse(text);
+              } catch (_) {}
+            }
+            return { res: res, data: data };
+          });
+        })
+        .then(function (_ref) {
+          var res = _ref.res;
+          var data = _ref.data;
+          if (res.ok) {
+            window.location.assign(new URL(thanksPath, window.location.origin).href);
+            return;
+          }
+          var msg =
+            (data && (data.error || data.message)) ||
+            (res.status === 429
+              ? 'Çok fazla deneme yapıldı. Lütfen bir süre sonra tekrar deneyin.'
+              : 'Gönderim tamamlanamadı. Lütfen alanları kontrol edip yeniden deneyin.');
+          showError(typeof msg === 'string' ? msg : 'Gönderim tamamlanamadı.');
+          setBusy(false);
+        })
+        .catch(function () {
+          showError('Bağlantı hatası. İnternetinizi kontrol edip tekrar deneyin.');
+          setBusy(false);
+        });
     });
   })();
 </script>
