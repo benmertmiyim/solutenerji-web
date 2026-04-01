@@ -11,14 +11,18 @@ const currentYear = new Date().getFullYear();
       <!-- Column 1: Brand & About -->
       <div class="lg:col-span-1">
         <a href="/#ana-sayfa" class="mb-6 inline-block">
-          <img
-            alt="Solut Enerji Logo"
-            width="459"
-            height="306"
-            decoding="async"
-            class="h-16 w-auto max-h-16 brightness-0 invert [-webkit-backface-visibility:hidden] [backface-visibility:hidden] [transform:translateZ(0)]"
-            src="/assets/logo.svg"
-          >
+          <!-- Küçük ekranda filtreli SVG yerine PNG; mavi footer arka planında invert ile beyaz logo -->
+          <picture>
+            <source media="(max-width: 767px)" srcset="/assets/logo.png" type="image/png" />
+            <img
+              alt="Solut Enerji Logo"
+              width="612"
+              height="408"
+              decoding="async"
+              class="h-16 w-auto max-h-16 brightness-0 invert [-webkit-backface-visibility:hidden] [backface-visibility:hidden] [transform:translateZ(0)]"
+              src="/assets/logo.svg"
+            />
+          </picture>
         </a>
         <p class="mb-6 text-sm leading-relaxed text-slate-300 lg:mb-8">
           Yüksek mühendislik standartları ile güneşten gelen gücü yaşam alanlarınıza ve ulaşımınıza entegre ediyoruz.
@@ -126,7 +130,7 @@ const currentYear = new Date().getFullYear();
           <li class="flex items-start gap-3">
             <span class="material-symbols-outlined mt-0.5 text-lg text-secondary-container">schedule</span>
             <span class="text-sm leading-relaxed text-slate-300">
-              Pzt – Cuma: 09:00 – 18:00
+              Pazartesi – Cumartesi: 09:00 – 18:00
             </span>
           </li>
         </ul>

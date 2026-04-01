@@ -54,8 +54,16 @@
   function detectActiveSection() {
     const scrollY = window.scrollY + NAV_HEIGHT + 20;
 
-    // If at the very top, activate ana-sayfa
+    // Üstteyken: geçerli hash deep link ise hash’i silme (replaceState); scroll init blokta
     if (window.scrollY < 100) {
+      const raw = window.location.hash;
+      if (raw) {
+        const urlHash = normalizeHash(raw);
+        if (urlHash !== '#ana-sayfa' && sectionHashes.has(urlHash)) {
+          setActive(urlHash);
+          return;
+        }
+      }
       setActive('#ana-sayfa');
       updateUrl('ana-sayfa');
       return;
@@ -128,6 +136,11 @@
       const hash = href.includes('#') ? '#' + href.split('#')[1] : '';
       if (!hash) return;
 
+      const targetId = hash.replace('#', '');
+      if (!document.getElementById(targetId)) {
+        return;
+      }
+
       e.preventDefault();
       window.history.pushState({}, '', href);
       scrollToSection(hash);
@@ -135,9 +148,41 @@
     });
   });
 
-  // Initial state
-  if (window.location.hash) {
-    setTimeout(() => scrollToSection(window.location.hash), 100);
+  // Tam sayfa /#bölüm girişi: hash’i hemen sabitle; detectActiveSection önce çalışırsa replaceState hash’i siliyordu
+  const rawIncoming = window.location.hash;
+  const incomingHash =
+    rawIncoming &&
+    normalizeHash(rawIncoming) !== '#ana-sayfa' &&
+    sectionHashes.has(normalizeHash(rawIncoming))
+      ? normalizeHash(rawIncoming)
+      : '';
+
+  function runDeepLinkScroll(h) {
+    scrollToSection(h);
+    setActive(h);
   }
+
+  if (incomingHash) {
+    setActive(incomingHash);
+    queueMicrotask(function () {
+      runDeepLinkScroll(incomingHash);
+    });
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        runDeepLinkScroll(incomingHash);
+      });
+    });
+    setTimeout(function () {
+      runDeepLinkScroll(incomingHash);
+    }, 150);
+    window.addEventListener(
+      'load',
+      function () {
+        runDeepLinkScroll(incomingHash);
+      },
+      { once: true },
+    );
+  }
+
   detectActiveSection();
 </script>
