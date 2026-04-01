@@ -11,18 +11,15 @@ const currentYear = new Date().getFullYear();
       <!-- Column 1: Brand & About -->
       <div class="lg:col-span-1">
         <a href="/#ana-sayfa" class="mb-6 inline-block">
-          <!-- Küçük ekranda filtreli SVG yerine PNG; mavi footer arka planında invert ile beyaz logo -->
-          <picture>
-            <source media="(max-width: 767px)" srcset="/assets/logo.png" type="image/png" />
-            <img
-              alt="Solut Enerji Logo"
-              width="612"
-              height="408"
-              decoding="async"
-              class="h-16 w-auto max-h-16 brightness-0 invert [-webkit-backface-visibility:hidden] [backface-visibility:hidden] [transform:translateZ(0)]"
-              src="/assets/logo.svg"
-            />
-          </picture>
+          <!-- Footer: footerlogo.png → /assets/logo-footer-white.png -->
+          <img
+            alt="Solut Enerji Logo"
+            width="1875"
+            height="625"
+            decoding="async"
+            class="h-20 w-auto max-h-20"
+            src="/assets/logo-footer-white.png"
+          />
         </a>
         <p class="mb-6 text-sm leading-relaxed text-slate-300 lg:mb-8">
           Yüksek mühendislik standartları ile güneşten gelen gücü yaşam alanlarınıza ve ulaşımınıza entegre ediyoruz.

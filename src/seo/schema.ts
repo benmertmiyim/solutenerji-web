@@ -6,7 +6,7 @@ export function absoluteUrl(site: URL, path: string): string {
 }
 
 export function logoUrl(site: URL): string {
-  return new URL('/assets/logo.png', site).href;
+  return new URL('/assets/logo-navbar.png', site).href;
 }
 
 export function globalJsonLd(site: URL): Record<string, unknown>[] {
