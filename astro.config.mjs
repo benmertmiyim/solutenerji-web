@@ -3,11 +3,14 @@ import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 import { loadEnv } from 'vite';
 
+import cloudflare from "@astrojs/cloudflare";
+
 const mode = process.env.NODE_ENV === 'production' ? 'production' : 'development';
 const env = loadEnv(mode, process.cwd(), '');
 
 export default defineConfig({
   site: env.PUBLIC_SITE_URL || 'https://solutenerji.com',
+
   integrations: [
     tailwind(),
     sitemap({
@@ -18,4 +21,6 @@ export default defineConfig({
         !page.includes('/iletisim'),
     }),
   ],
+
+  adapter: cloudflare()
 });
