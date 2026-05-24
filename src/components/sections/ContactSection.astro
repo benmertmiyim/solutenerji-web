@@ -1,6 +1,7 @@
 ---
 import { siteConfig } from '../../site.config';
 import { getFormspreeAction } from '../../lib/formspree';
+import Icon from '../Icon.astro';
 
 const formAction = getFormspreeAction();
 ---
@@ -10,9 +11,9 @@ const formAction = getFormspreeAction();
       <img
         class="h-full w-full object-cover"
         alt="Mühendislik ve enerji projeleri üzerinde çalışan ekip"
-        src="/assets/contact-hero.jpg"
-        width="1920"
-        height="640"
+        src="/assets/contact-hero.webp"
+        width="512"
+        height="512"
       />
     </div>
     <div class="relative z-10 mx-auto w-full max-w-7xl px-6 py-20">
@@ -40,8 +41,8 @@ const formAction = getFormspreeAction();
 
         <div class="space-y-8">
           <div class="flex items-start gap-4">
-            <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-primary">
-              <span class="material-symbols-outlined text-secondary-container">location_on</span>
+            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary">
+              <Icon name="locationOn" class="text-secondary-container" />
             </div>
             <div>
               <div class="mb-1 text-xs font-bold uppercase tracking-widest text-secondary">Adres</div>
@@ -50,8 +51,8 @@ const formAction = getFormspreeAction();
           </div>
 
           <div class="flex items-start gap-4">
-            <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-primary">
-              <span class="material-symbols-outlined text-secondary-container">mail</span>
+            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary">
+              <Icon name="mail" class="text-secondary-container" />
             </div>
             <div>
               <div class="mb-1 text-xs font-bold uppercase tracking-widest text-secondary">E-Posta</div>
@@ -65,12 +66,12 @@ const formAction = getFormspreeAction();
           </div>
 
           <div class="flex items-start gap-4">
-            <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-primary">
-              <span class="material-symbols-outlined text-secondary-container">schedule</span>
+            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary">
+              <Icon name="clock" class="text-secondary-container" />
             </div>
             <div>
               <div class="mb-1 text-xs font-bold uppercase tracking-widest text-secondary">Çalışma Saatleri</div>
-              <div class="font-semibold text-on-surface">Pazartesi – Cumartesi: 09:00 – 18:00</div>
+              <div class="font-semibold text-on-surface">{siteConfig.openingHoursDisplay}</div>
               <div class="mt-1 text-sm text-on-surface-variant">Acil teknik destek için 7/24 ulaşabilirsiniz.</div>
             </div>
           </div>
@@ -80,34 +81,26 @@ const formAction = getFormspreeAction();
           <h4 class="mb-4 font-headline text-lg font-bold text-primary">Neden Solut Enerji?</h4>
           <ul class="space-y-3">
             <li class="flex items-center gap-3 text-sm text-on-surface-variant">
-              <span class="material-symbols-outlined text-base text-secondary-container" style="font-variation-settings: 'FILL' 1;">
-                check_circle
-              </span>
+              <Icon name="checkCircle" class="text-base text-secondary-container" />
               Ege bölgesinde geniş hizmet ağı
             </li>
             <li class="flex items-center gap-3 text-sm text-on-surface-variant">
-              <span class="material-symbols-outlined text-base text-secondary-container" style="font-variation-settings: 'FILL' 1;">
-                check_circle
-              </span>
+              <Icon name="checkCircle" class="text-base text-secondary-container" />
               İhtiyaca özel enerji sistemleri mühendisliği çözümleri
             </li>
             <li class="flex items-center gap-3 text-sm text-on-surface-variant">
-              <span class="material-symbols-outlined text-base text-secondary-container" style="font-variation-settings: 'FILL' 1;">
-                check_circle
-              </span>
+              <Icon name="checkCircle" class="text-base text-secondary-container" />
               Kurulum öncesi ve sonrası 7/24 teknik destek
             </li>
             <li class="flex items-center gap-3 text-sm text-on-surface-variant">
-              <span class="material-symbols-outlined text-base text-secondary-container" style="font-variation-settings: 'FILL' 1;">
-                check_circle
-              </span>
+              <Icon name="checkCircle" class="text-base text-secondary-container" />
               Uluslararası standartlara uygun ürün ve kurulum hizmetleri
             </li>
           </ul>
         </div>
       </div>
 
-      <div class="rounded-xl bg-surface-container-lowest p-10 shadow-sm">
+      <div class="rounded-xl bg-surface-container-lowest p-10 shadow-xs">
         <h4 class="mb-2 font-headline text-2xl font-bold text-primary">Ücretsiz Teklif Alın</h4>
         <p class="mb-8 text-sm text-on-surface-variant">Formu doldurun, en kısa sürede size dönelim.</p>
 
@@ -141,7 +134,7 @@ const formAction = getFormspreeAction();
                 type="text"
                 required
                 placeholder="Ad Soyad"
-                class="placeholder-outline w-full rounded-sm border-0 border-b border-outline-variant bg-transparent py-3 text-sm text-on-surface transition-colors focus:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-surface-container-lowest"
+                class="placeholder-outline w-full rounded-xs border-0 border-b border-outline-variant bg-transparent py-3 text-sm text-on-surface transition-colors focus:border-primary focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-surface-container-lowest"
               />
             </div>
             <div class="space-y-2">
@@ -153,7 +146,7 @@ const formAction = getFormspreeAction();
                 name="telefon"
                 type="tel"
                 placeholder="+90 5xx xxx xx xx"
-                class="placeholder-outline w-full rounded-sm border-0 border-b border-outline-variant bg-transparent py-3 text-sm text-on-surface transition-colors focus:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-surface-container-lowest"
+                class="placeholder-outline w-full rounded-xs border-0 border-b border-outline-variant bg-transparent py-3 text-sm text-on-surface transition-colors focus:border-primary focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-surface-container-lowest"
               />
             </div>
           </div>
@@ -168,7 +161,7 @@ const formAction = getFormspreeAction();
               type="email"
               required
               placeholder="email@adresiniz.com"
-              class="placeholder-outline w-full rounded-sm border-0 border-b border-outline-variant bg-transparent py-3 text-sm text-on-surface transition-colors focus:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-surface-container-lowest"
+              class="placeholder-outline w-full rounded-xs border-0 border-b border-outline-variant bg-transparent py-3 text-sm text-on-surface transition-colors focus:border-primary focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-surface-container-lowest"
             />
           </div>
 
@@ -180,7 +173,7 @@ const formAction = getFormspreeAction();
               id="contact-hizmet"
               name="hizmet_turu"
               data-service-select
-              class="w-full rounded-sm border-0 border-b border-outline-variant bg-transparent py-3 text-sm text-on-surface transition-colors focus:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-surface-container-lowest"
+              class="w-full rounded-xs border-0 border-b border-outline-variant bg-transparent py-3 text-sm text-on-surface transition-colors focus:border-primary focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-surface-container-lowest"
             >
               <option value="">Seçiniz...</option>
               <option value="mesken_ges">Mesken Çatı GES Kurulumu</option>
@@ -200,7 +193,7 @@ const formAction = getFormspreeAction();
               required
               rows="4"
               placeholder="Projeniz hakkında kısaca bilgi verin..."
-              class="placeholder-outline w-full resize-none rounded-sm border-0 border-b border-outline-variant bg-transparent py-3 text-sm text-on-surface transition-colors focus:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-surface-container-lowest"
+              class="placeholder-outline w-full resize-none rounded-xs border-0 border-b border-outline-variant bg-transparent py-3 text-sm text-on-surface transition-colors focus:border-primary focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-surface-container-lowest"
             ></textarea>
           </div>
 
@@ -219,7 +212,7 @@ const formAction = getFormspreeAction();
               class="flex w-full items-center justify-center gap-2 rounded-md bg-secondary-container py-4 font-headline font-extrabold text-on-secondary-fixed transition-all hover:opacity-90 active:scale-95 disabled:cursor-not-allowed disabled:opacity-50"
             >
               <span id="contact-submit-label">Mesajı Gönder</span>
-              <span class="material-symbols-outlined" aria-hidden="true">send</span>
+              <Icon name="send" />
             </button>
           </div>
           <p class="text-center text-[11px] text-on-surface-variant">
@@ -232,7 +225,7 @@ const formAction = getFormspreeAction();
   </section>
 </section>
 
-<script is:inline>
+<script>
   (function () {
     const form = document.querySelector('[data-contact-form]');
     if (!(form instanceof HTMLFormElement) || !form.action) return;
@@ -249,14 +242,14 @@ const formAction = getFormspreeAction();
       }
     }
 
-    function showError(msg) {
+    function showError(msg: string) {
       if (errBox) {
         errBox.textContent = msg;
         errBox.hidden = false;
       }
     }
 
-    function setBusy(busy) {
+    function setBusy(busy: boolean) {
       if (btn instanceof HTMLButtonElement) {
         btn.disabled = busy;
         btn.setAttribute('aria-busy', busy ? 'true' : 'false');
@@ -264,7 +257,7 @@ const formAction = getFormspreeAction();
       if (label) label.textContent = busy ? 'Gönderiliyor…' : 'Mesajı Gönder';
     }
 
-    function wireField(id, emptyMsg, typeMismatchMsg) {
+    function wireField(id: string, emptyMsg: string, typeMismatchMsg?: string) {
       const el = document.getElementById(id);
       if (!(el instanceof HTMLInputElement || el instanceof HTMLTextAreaElement)) return;
       el.addEventListener('input', function () {
@@ -282,49 +275,45 @@ const formAction = getFormspreeAction();
     wireField('contact-email', 'Lütfen e-posta adresinizi girin.', 'Lütfen geçerli bir e-posta adresi girin.');
     wireField('contact-mesaj', 'Lütfen mesajınızı yazın.');
 
-    form.addEventListener('submit', function (e) {
+    form.addEventListener('submit', async function (e: SubmitEvent) {
       e.preventDefault();
       hideError();
       if (!form.reportValidity()) return;
 
       setBusy(true);
 
-      var fd = new FormData(form);
-      fetch(form.action, {
-        method: 'POST',
-        body: fd,
-        headers: { Accept: 'application/json' },
-      })
-        .then(function (res) {
-          return res.text().then(function (text) {
-            var data = {};
-            if (text) {
-              try {
-                data = JSON.parse(text);
-              } catch (_) {}
-            }
-            return { res: res, data: data };
-          });
-        })
-        .then(function (_ref) {
-          var res = _ref.res;
-          var data = _ref.data;
-          if (res.ok) {
-            window.location.assign(new URL(thanksPath, window.location.origin).href);
-            return;
-          }
-          var msg =
-            (data && (data.error || data.message)) ||
-            (res.status === 429
-              ? 'Çok fazla deneme yapıldı. Lütfen bir süre sonra tekrar deneyin.'
-              : 'Gönderim tamamlanamadı. Lütfen alanları kontrol edip yeniden deneyin.');
-          showError(typeof msg === 'string' ? msg : 'Gönderim tamamlanamadı.');
-          setBusy(false);
-        })
-        .catch(function () {
-          showError('Bağlantı hatası. İnternetinizi kontrol edip tekrar deneyin.');
-          setBusy(false);
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { Accept: 'application/json' },
         });
+
+        const text = await res.text();
+        let data: { error?: unknown; message?: unknown } = {};
+        if (text) {
+          try {
+            data = JSON.parse(text);
+          } catch (_) {}
+        }
+
+        if (res.ok) {
+          window.location.assign(new URL(thanksPath, window.location.origin).href);
+          return;
+        }
+
+        const msg =
+          data.error ||
+          data.message ||
+          (res.status === 429
+            ? 'Çok fazla deneme yapıldı. Lütfen bir süre sonra tekrar deneyin.'
+            : 'Gönderim tamamlanamadı. Lütfen alanları kontrol edip yeniden deneyin.');
+        showError(typeof msg === 'string' ? msg : 'Gönderim tamamlanamadı.');
+        setBusy(false);
+      } catch {
+        showError('Bağlantı hatası. İnternetinizi kontrol edip tekrar deneyin.');
+        setBusy(false);
+      }
     });
   })();
 </script>

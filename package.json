@@ -7,25 +7,22 @@
     "start": "astro dev",
     "check": "astro check",
     "build": "astro check && astro build",
-    "preview": "npm run build && wrangler dev",
+    "preview": "npm run build && wrangler dev --assets dist",
     "astro": "astro",
     "deploy": "npm run build && wrangler deploy",
     "cf-typegen": "wrangler types"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "12",
     "@astrojs/sitemap": "^3.7.2",
-    "@astrojs/tailwind": "^5.1.4",
     "@fontsource/inter": "^5.2.8",
     "@fontsource/manrope": "^5.2.8",
-    "astro": "^5.5.4",
-    "material-symbols": "^0.42.3",
-    "tailwindcss": "^3.4.17"
+    "@tailwindcss/vite": "^4.3.0",
+    "astro": "^6.3.7",
+    "tailwindcss": "^4.3.0"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.8",
-    "@tailwindcss/forms": "^0.5.10",
+    "@astrojs/check": "^0.9.9",
     "typescript": "^5.9.3",
-    "wrangler": "^4.79.0"
+    "wrangler": "^4.94.0"
   }
 }

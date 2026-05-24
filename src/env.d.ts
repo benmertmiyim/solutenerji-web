@@ -12,6 +12,8 @@ interface ImportMetaEnv {
   readonly PUBLIC_ADDRESS_LOCALITY?: string;
   readonly PUBLIC_ADDRESS_REGION?: string;
   readonly PUBLIC_ADDRESS_COUNTRY?: string;
+  readonly PUBLIC_OPENING_HOURS?: string;
+  readonly PUBLIC_OPENING_HOURS_DISPLAY?: string;
   readonly PUBLIC_INSTAGRAM_URL?: string;
   readonly PUBLIC_LINKEDIN_URL?: string;
   readonly PUBLIC_GOOGLE_SITE_VERIFICATION?: string;

@@ -1,4 +1,4 @@
-<script is:inline>
+<script>
   const sectionHashes = new Set([
     '#ana-sayfa',
     '#hizmetler',
@@ -8,17 +8,21 @@
     '#iletisim',
   ]);
 
-  const links = Array.from(document.querySelectorAll('[data-anchor-link]'));
-  const sections = Array.from(document.querySelectorAll('[data-scroll-section]'));
+  const links = Array.from(document.querySelectorAll('[data-anchor-link]')).filter(
+    (link): link is HTMLAnchorElement => link instanceof HTMLAnchorElement,
+  );
+  const sections = Array.from(document.querySelectorAll('[data-scroll-section]')).filter(
+    (section): section is HTMLElement => section instanceof HTMLElement,
+  );
   const serviceSelect = document.querySelector('[data-service-select]');
   const NAV_HEIGHT = 80;
 
-  function normalizeHash(rawHash) {
+  function normalizeHash(rawHash: string): string {
     if (!rawHash) return '#ana-sayfa';
     return sectionHashes.has(rawHash) ? rawHash : '#ana-sayfa';
   }
 
-  function hashFromHref(href) {
+  function hashFromHref(href: string): string {
     try {
       return normalizeHash(new URL(href, window.location.origin).hash);
     } catch {
@@ -26,7 +30,7 @@
     }
   }
 
-  function setActive(hash) {
+  function setActive(hash: string) {
     const activeHash = normalizeHash(hash);
 
     links.forEach((link) => {
@@ -41,7 +45,7 @@
     });
   }
 
-  function updateUrl(activeId) {
+  function updateUrl(activeId: string) {
     const nextUrl = activeId === 'ana-sayfa' ? '/' : `/#${activeId}`;
     const currentUrl = `${window.location.pathname}${window.location.hash}`;
 
@@ -121,7 +125,7 @@
   }
 
   // Precise scroll positioning for anchor links
-  function scrollToSection(hash) {
+  function scrollToSection(hash: string) {
     const targetId = hash.replace('#', '');
     const targetEl = document.getElementById(targetId);
     if (!targetEl) return;
@@ -131,7 +135,8 @@
   }
 
   document.querySelectorAll('[data-anchor-link], a[href^="/#"], a[href^="#"]').forEach((link) => {
-    link.addEventListener('click', (e) => {
+    if (!(link instanceof HTMLAnchorElement)) return;
+    link.addEventListener('click', (e: MouseEvent) => {
       const href = link.getAttribute('href') || '';
       const hash = href.includes('#') ? '#' + href.split('#')[1] : '';
       if (!hash) return;
@@ -157,7 +162,7 @@
       ? normalizeHash(rawIncoming)
       : '';
 
-  function runDeepLinkScroll(h) {
+  function runDeepLinkScroll(h: string) {
     scrollToSection(h);
     setActive(h);
   }

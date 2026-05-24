@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
 ---
 <BaseLayout
   title="Teşekkürler | Solut Enerji"
@@ -8,7 +9,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 >
   <div class="mx-auto flex min-h-[70vh] max-w-2xl flex-col items-center justify-center px-6 pb-24 pt-32 text-center">
     <div class="kinetic-monolith-gradient mb-8 flex h-20 w-20 items-center justify-center rounded-full">
-      <span class="material-symbols-outlined text-4xl text-secondary-container">mark_email_read</span>
+      <Icon name="markEmailRead" class="text-4xl text-secondary-container" />
     </div>
     <h1 class="mb-4 font-headline text-3xl font-extrabold text-primary md:text-4xl">Teşekkür ederiz</h1>
     <p class="mb-10 text-lg leading-relaxed text-on-surface-variant">

@@ -13,9 +13,10 @@ interface Props {
   noindex?: boolean;
   keywords?: string;
   ogType?: 'website' | 'article';
+  canonicalPath?: string | null;
 }
 
-const { title, description, ogImage, noindex = false, keywords, ogType } = Astro.props;
+const { title, description, ogImage, noindex = false, keywords, ogType, canonicalPath } = Astro.props;
 const site = Astro.site ?? new URL('https://solutenerji.com');
 ---
 <!DOCTYPE html>
@@ -30,11 +31,17 @@ const site = Astro.site ?? new URL('https://solutenerji.com');
     noindex={noindex}
     keywords={keywords}
     ogType={ogType}
+    canonicalPath={canonicalPath}
   />
   <StructuredData schema={globalJsonLd(site)} />
   <slot name="head" />
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-  <link rel="apple-touch-icon" href="/assets/logo-navbar.png" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="48x48" href="/icon-48.png" />
+  <link rel="icon" type="image/png" sizes="96x96" href="/icon-96.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 </head>
 <body class="bg-background font-body text-on-surface antialiased">
   <Nav />
