@@ -2,25 +2,28 @@
 interface Props {
   title: string;
   description?: string;
-  /** public/ köküne göre yol, örn. /og-default.jpg */
+  /** public/ köküne göre yol, örn. /assets/solut-enerji-logo-og.jpg */
   image?: string;
   noindex?: boolean;
   /** Virgülle ayrılmış, kısa ve doğal anahtar kelimeler */
   keywords?: string;
   ogType?: 'website' | 'article';
+  canonicalPath?: string | null;
 }
 
 const {
   title,
   description = 'Güneş enerjisi ve EV şarj çözümleri.',
-  image = '/og-default.jpg',
+  image = '/assets/solut-enerji-logo-og.jpg',
   noindex = false,
   keywords,
   ogType = 'website',
+  canonicalPath,
 } = Astro.props;
 
 const site = Astro.site ?? new URL('https://solutenerji.com');
-const canonical = new URL(Astro.url.pathname, site);
+const canonicalHref =
+  canonicalPath === null ? null : new URL(canonicalPath ?? Astro.url.pathname, site).href;
 const ogImageUrl = new URL(image.startsWith('/') ? image : `/${image}`, site).href;
 const googleVerify = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION?.trim();
 const twitterSite = import.meta.env.PUBLIC_TWITTER_SITE?.trim();
@@ -28,7 +31,7 @@ const twitterSite = import.meta.env.PUBLIC_TWITTER_SITE?.trim();
 <title>{title}</title>
 <meta name="description" content={description} />
 {keywords ? <meta name="keywords" content={keywords} /> : null}
-<link rel="canonical" href={canonical.href} />
+{canonicalHref ? <link rel="canonical" href={canonicalHref} /> : null}
 {googleVerify ? <meta name="google-site-verification" content={googleVerify} /> : null}
 {noindex ? (
   <meta name="robots" content="noindex,follow" />
@@ -38,7 +41,7 @@ const twitterSite = import.meta.env.PUBLIC_TWITTER_SITE?.trim();
 <meta property="og:site_name" content="Solut Enerji" />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:url" content={canonical.href} />
+{canonicalHref ? <meta property="og:url" content={canonicalHref} /> : null}
 <meta property="og:type" content={ogType} />
 <meta property="og:image" content={ogImageUrl} />
 <meta property="og:locale" content="tr_TR" />

@@ -1,4 +1,6 @@
 ---
+import Icon from './Icon.astro';
+
 const navLinks = [
   { href: '/#ana-sayfa', label: 'Ana Sayfa', anchor: true },
   { href: '/#gunes-enerjisi', label: 'Güneş Enerjisi', anchor: true },
@@ -8,7 +10,7 @@ const navLinks = [
 ] as const;
 ---
 <nav
-  class="fixed top-0 z-50 w-full border-b border-slate-100 bg-[#FFF] shadow-sm"
+  class="fixed top-0 z-50 w-full border-b border-slate-100 bg-[#FFF] shadow-xs"
 >
   <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
     <a
@@ -16,15 +18,14 @@ const navLinks = [
       aria-label="Solut Enerji"
       class="relative z-[2] flex min-w-0 max-w-[65%] items-center [isolation:isolate] sm:max-w-none"
     >
-      <!-- Navbar: logonewnew.png → /assets/logo-navbar.png -->
       <img
-        alt="Solut Enerji Logo "
-        width="1875"
-        height="625"
+        alt="Solut Enerji Logo"
+        width="640"
+        height="295"
         decoding="sync"
         fetchpriority="high"
-        class="h-10 w-auto max-h-10 origin-left sm:h-11 sm:max-h-11 md:h-12 md:max-h-12"
-        src="/assets/logo-navbar.png"
+        class="h-14 w-auto max-h-14 origin-left sm:h-16 sm:max-h-16"
+        src="/assets/solut-enerji-logo-nav.webp"
       />
     </a>
 
@@ -61,13 +62,10 @@ const navLinks = [
         aria-label="Menüyü aç"
         class="relative inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-slate-700 transition-colors hover:bg-slate-100 md:hidden"
       >
-        <span
-          class="material-symbols-outlined pointer-events-none absolute left-1/2 top-1/2 block -translate-x-1/2 -translate-y-1/2 text-2xl leading-none"
-          style="font-size: 1.5rem; width: 1.5rem; height: 1.5rem;"
-          aria-hidden="true"
-        >
-          menu
-        </span>
+        <Icon
+          name="menu"
+          class="mobile-menu-icon pointer-events-none absolute left-1/2 top-1/2 block -translate-x-1/2 -translate-y-1/2 text-2xl leading-none"
+        />
       </button>
     </div>
   </div>
@@ -103,23 +101,33 @@ const navLinks = [
   </div>
 </nav>
 
-<script is:inline>
+<script>
   (function () {
-    const menuBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const menuPanel = mobileMenu?.querySelector('.mobile-menu-panel');
+    const menuBtnNode = document.getElementById('mobile-menu-btn');
+    const mobileMenuNode = document.getElementById('mobile-menu');
+    const menuPanelNode = mobileMenuNode?.querySelector('.mobile-menu-panel');
 
-    if (!menuBtn || !mobileMenu || !menuPanel) return;
+    if (
+      !(menuBtnNode instanceof HTMLButtonElement) ||
+      !(mobileMenuNode instanceof HTMLElement) ||
+      !(menuPanelNode instanceof HTMLElement)
+    ) {
+      return;
+    }
 
-    function getFocusable() {
+    const menuBtn: HTMLButtonElement = menuBtnNode;
+    const mobileMenu: HTMLElement = mobileMenuNode;
+    const menuPanel: HTMLElement = menuPanelNode;
+
+    function getFocusable(): HTMLElement[] {
       return Array.from(
         menuPanel.querySelectorAll('a[href], button:not([disabled])'),
-      ).filter(function (el) {
+      ).filter(function (el): el is HTMLElement {
         return el instanceof HTMLElement && el.offsetParent !== null;
       });
     }
 
-    function setOpen(open) {
+    function setOpen(open: boolean) {
       if (open) {
         mobileMenu.classList.remove('hidden');
         menuBtn.setAttribute('aria-expanded', 'true');
@@ -138,11 +146,11 @@ const navLinks = [
       }
     }
 
-    function isOpen() {
+    function isOpen(): boolean {
       return !mobileMenu.classList.contains('hidden');
     }
 
-    function onDocumentKeydown(e) {
+    function onDocumentKeydown(e: KeyboardEvent) {
       if (!isOpen()) return;
       if (e.key === 'Escape') {
         e.preventDefault();
@@ -159,15 +167,15 @@ const navLinks = [
       if (e.shiftKey) {
         if (active === first) {
           e.preventDefault();
-          last.focus();
+          if (last) last.focus();
         }
       } else if (active === last) {
         e.preventDefault();
-        first.focus();
+        if (first) first.focus();
       }
     }
 
-    function onDocumentPointerDown(e) {
+    function onDocumentPointerDown(e: PointerEvent) {
       if (!isOpen()) return;
       const t = e.target;
       if (!(t instanceof Node)) return;
@@ -190,6 +198,7 @@ const navLinks = [
     });
 
     document.querySelectorAll('[data-mobile-link]').forEach(function (link) {
+      if (!(link instanceof HTMLAnchorElement)) return;
       link.addEventListener('click', function () {
         setOpen(false);
         document.removeEventListener('pointerdown', onDocumentPointerDown, true);

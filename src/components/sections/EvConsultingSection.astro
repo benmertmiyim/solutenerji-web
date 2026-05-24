@@ -1,3 +1,7 @@
+---
+import Icon from '../Icon.astro';
+---
+
 <section id="ev-sarj-ve-danismanlik" data-scroll-section class="section-anchor">
   <section class="overflow-hidden bg-surface-container-low py-24">
     <div class="mx-auto max-w-7xl px-6">
@@ -9,7 +13,7 @@
           </h4>
         </div>
         <div class="hidden text-right md:block">
-          <span class="font-headline text-6xl font-black leading-none text-outline-variant/30">MOBİLİTE</span>
+          <span aria-hidden="true" class="font-headline text-6xl font-black leading-none text-primary/70">MOBİLİTE</span>
         </div>
       </div>
       <p class="mb-8 max-w-3xl text-sm leading-relaxed text-on-surface-variant">
@@ -20,13 +24,13 @@
         sayfası.
       </p>
       <div class="grid gap-8 md:grid-cols-2">
-        <article class="group flex flex-col overflow-hidden rounded-xl bg-white shadow-sm">
+        <article class="group flex flex-col overflow-hidden rounded-xl bg-white shadow-xs">
           <div class="relative h-64 overflow-hidden">
             <img
               alt="Konut duvarına monte AC elektrikli araç şarj ünitesi"
               class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-              src="/assets/ev-ac-charging.jpg"
-              width="800"
+              src="/assets/ev-ac-charging.webp"
+              width="512"
               height="512"
             />
             <div class="absolute left-4 top-4 rounded-full bg-secondary-container px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-on-secondary-container">
@@ -39,18 +43,18 @@
               Konut, site ve iş yeri projelerine yönelik bireysel ve kurumsal ihtiyaçları karşılayan AC şarj altyapısı çözümleri sunuyoruz.
             </p>
             <a href="#iletisim" data-service="ev_sarj" class="inline-flex items-center gap-2 text-sm font-bold text-secondary hover:underline">
-              Teklif İste <span class="material-symbols-outlined text-sm">arrow_forward</span>
+              Teklif İste <Icon name="arrowForward" class="text-sm" />
             </a>
           </div>
         </article>
 
-        <article class="group flex flex-col overflow-hidden rounded-xl bg-white shadow-sm">
+        <article class="group flex flex-col overflow-hidden rounded-xl bg-white shadow-xs">
           <div class="relative h-64 overflow-hidden">
             <img
               alt="Yüksek güçlü DC hızlı şarj istasyonu"
               class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-              src="/assets/ev-dc-charging.jpg"
-              width="800"
+              src="/assets/ev-dc-charging.webp"
+              width="512"
               height="512"
             />
             <div class="absolute left-4 top-4 rounded-full bg-primary px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white">
@@ -63,7 +67,7 @@
               Otoyol, filo ve yoğun sirkülasyonlu ticari alanlar için yüksek güçlü DC çözümler ile bekleme süresini minimuma indiriyoruz.
             </p>
             <a href="#iletisim" data-service="ev_sarj" class="inline-flex items-center gap-2 text-sm font-bold text-secondary hover:underline">
-              Teknik Teklif Al <span class="material-symbols-outlined text-sm">arrow_forward</span>
+              Teknik Teklif Al <Icon name="arrowForward" class="text-sm" />
             </a>
           </div>
         </article>
@@ -94,11 +98,11 @@
           </p>
           <div class="space-y-4">
             <div class="flex items-center gap-4 rounded-xl bg-surface-container-low p-4">
-              <span class="material-symbols-outlined text-3xl text-secondary">analytics</span>
+              <Icon name="analytics" class="text-3xl text-secondary" />
               <span class="font-semibold text-primary">Teknik Ön İnceleme</span>
             </div>
             <div class="flex items-center gap-4 rounded-xl bg-surface-container-low p-4">
-              <span class="material-symbols-outlined text-3xl text-secondary">finance_mode</span>
+              <Icon name="financeMode" class="text-3xl text-secondary" />
               <span class="font-semibold text-primary">Yatırım Geri Dönüş Analizi</span>
             </div>
           </div>
@@ -107,7 +111,7 @@
           <div class="grid gap-6 md:grid-cols-2">
             <div class="rounded-xl bg-surface-container-lowest p-8 transition-all hover:bg-surface-container-high">
               <div class="mb-6 flex h-12 w-12 items-center justify-center rounded-lg bg-primary-fixed">
-                <span class="material-symbols-outlined text-primary">query_stats</span>
+                <Icon name="queryStats" class="text-primary" />
               </div>
               <h5 class="mb-3 font-headline text-xl font-bold text-primary">Üretim ve Tüketim Analizi</h5>
               <p class="text-sm text-on-surface-variant">
@@ -116,7 +120,7 @@
             </div>
             <div class="rounded-xl bg-surface-container-lowest p-8 transition-all hover:bg-surface-container-high">
               <div class="mb-6 flex h-12 w-12 items-center justify-center rounded-lg bg-primary-fixed">
-                <span class="material-symbols-outlined text-primary">assignment</span>
+                <Icon name="assignment" class="text-primary" />
               </div>
               <h5 class="mb-3 font-headline text-xl font-bold text-primary">İzin ve Uyum Süreçleri</h5>
               <p class="text-sm text-on-surface-variant">

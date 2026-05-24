@@ -5,11 +5,30 @@
 @import '@fontsource/inter/400.css';
 @import '@fontsource/inter/500.css';
 @import '@fontsource/inter/600.css';
-@import 'material-symbols/outlined.css';
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+@config '../../tailwind.config.cjs';
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-width: 0;
+}
+
+img,
+picture,
+svg,
+video,
+canvas {
+  display: block;
+  max-width: 100%;
+}
 
 /* Klavye ile görünür odak (WCAG) */
 :focus {
@@ -30,10 +49,9 @@ select:focus-visible {
   outline: none;
 }
 
-.material-symbols-outlined {
-  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-  display: inline-block;
-  vertical-align: middle;
+.mobile-menu-icon {
+  height: 1.5rem;
+  width: 1.5rem;
 }
 
 /* Ana gradient - index, iletisim, 404 */

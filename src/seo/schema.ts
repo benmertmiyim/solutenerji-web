@@ -6,7 +6,7 @@ export function absoluteUrl(site: URL, path: string): string {
 }
 
 export function logoUrl(site: URL): string {
-  return new URL('/assets/logo-navbar.png', site).href;
+  return new URL('/assets/solut-enerji-logo-schema.png', site).href;
 }
 
 export function globalJsonLd(site: URL): Record<string, unknown>[] {
@@ -32,6 +32,14 @@ export function globalJsonLd(site: URL): Record<string, unknown>[] {
     logo: logoUrl(site),
     email: siteConfig.email,
     telephone: siteConfig.phoneE164,
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'customer service',
+      telephone: siteConfig.phoneE164,
+      email: siteConfig.email,
+      areaServed: 'TR',
+      availableLanguage: ['tr'],
+    },
   };
   if (sameAs.length) organization.sameAs = sameAs;
 
@@ -46,7 +54,7 @@ export function globalJsonLd(site: URL): Record<string, unknown>[] {
     },
   };
 
-  const localBusiness = {
+  const localBusiness: Record<string, unknown> = {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
     name: siteConfig.companyLegalName,
@@ -55,11 +63,13 @@ export function globalJsonLd(site: URL): Record<string, unknown>[] {
     telephone: siteConfig.phoneE164,
     email: siteConfig.email,
     address,
+    openingHours: siteConfig.openingHours,
     areaServed: [
       { '@type': 'AdministrativeArea', name: 'Ege Bölgesi' },
       { '@type': 'City', name: 'İzmir' },
     ],
   };
+  if (sameAs.length) localBusiness.sameAs = sameAs;
 
   return [organization, website, localBusiness];
 }
