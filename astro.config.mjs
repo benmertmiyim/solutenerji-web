@@ -1,7 +1,6 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
-import { loadEnv } from 'vite';
 
 function resolveSiteUrl(rawSiteUrl, shouldValidate) {
   const fallback = 'https://solutenerji.com';
@@ -21,10 +20,8 @@ function resolveSiteUrl(rawSiteUrl, shouldValidate) {
   }
 }
 
-const mode = process.env.NODE_ENV === 'production' ? 'production' : 'development';
-const env = loadEnv(mode, process.cwd(), '');
 const isBuild = process.argv.includes('build') || process.env.npm_lifecycle_event === 'build';
-const site = resolveSiteUrl(env.PUBLIC_SITE_URL, isBuild);
+const site = resolveSiteUrl(process.env.PUBLIC_SITE_URL, isBuild);
 
 export default defineConfig({
   site,

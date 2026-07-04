@@ -1,26 +1,216 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import ContactSection from '../components/sections/ContactSection.astro';
-import EvConsultingSection from '../components/sections/EvConsultingSection.astro';
-import HomeHero from '../components/sections/HomeHero.astro';
-
-import ServicesOverview from '../components/sections/ServicesOverview.astro';
-import SolarSection from '../components/sections/SolarSection.astro';
-import SinglePageBehavior from '../components/SinglePageBehavior.astro';
 ---
-<BaseLayout
-  title="Solut Enerji | İzmir ve Ege’de Mesken GES & EV Şarj"
-  description="İzmir merkezli mühendislik ekibiyle Ege bölgesinde mesken çatı GES, elektrikli araç şarj altyapısı ve GES danışmanlığı. Anahtar teslim kurulum ve şeffaf süreç."
-  keywords="solut enerji, izmir güneş enerjisi, ege çatı ges, ev şarj izmir, ges danışmanlık"
->
-  <div id="ana-sayfa" data-scroll-section class="section-anchor">
-    <HomeHero />
-    <ServicesOverview />
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Solut Enerji | Enerjinin Teknolojik Formu</title>
+    <meta name="description" content="Solut Enerji; Mesken GES, tarımsal sulama, ürün tedariği ve elektrikli araç şarj istasyonu kurulumlarında mühendislik odaklı enerji çözümleri sunar." />
+    <meta name="keywords" content="Solut Enerji, İzmir güneş enerjisi, mesken GES, tarımsal sulama, elektrikli araç şarj istasyonu, ürün tedariği" />
+    <meta property="og:title" content="Solut Enerji | Enerjinin Teknolojik Formu" />
+    <meta property="og:description" content="Mesken GES, tarımsal sulama, ürün tedariği ve elektrikli araç şarj istasyonu çözümlerinde mühendislik odaklı enerji teknolojileri." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/solut-site/assets/hero-solut.jpg" />
+    <meta name="theme-color" content="#06215a" />
+    <link rel="preload" as="image" href="/solut-site/assets/hero-solut.jpg" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="stylesheet" href="/solut-site/styles.css" />
+  </head>
+  <body>
+    <header class="site-header" data-header>
+      <a class="brand" href="#top" aria-label="Solut Enerji ana sayfa">
+        <img src="/solut-site/assets/solut-logo-white.png" alt="Solut Enerji" />
+      </a>
+      <nav class="nav-links" aria-label="Ana menü">
+        <a href="#hizmetler">Hizmetler</a>
+        <a href="#hakkimizda">Hakkımızda</a>
+        <a href="#muhendislik">Mühendislik</a>
+        <a href="#iletisim">İletişim</a>
+      </nav>
+      <div class="header-actions">
+        <a class="ghost-button" data-call-link href="#">Ara</a>
+        <a class="solid-button" data-whatsapp-link target="_blank" rel="noreferrer" href="#">WhatsApp</a>
+      </div>
+      <button class="menu-button" data-menu-button aria-label="Menüyü aç" aria-expanded="false">
+        <span></span>
+        <span></span>
+      </button>
+    </header>
 
-  </div>
-  <SolarSection />
-  <EvConsultingSection />
-  
-  <ContactSection />
-  <SinglePageBehavior />
-</BaseLayout>
+    <main id="top">
+      <section class="hero" aria-label="Solut Enerji">
+        <picture>
+          <source media="(max-width: 720px)" srcset="/solut-site/assets/hero-solut.jpg" />
+          <img src="/solut-site/assets/hero-solut.jpg" alt="Çatı güneş enerjisi, tarımsal güneş sistemi ve elektrikli araç şarj çözümü bulunan modern yapı" />
+        </picture>
+        <div class="hero-scrim"></div>
+        <div class="sky-drift" aria-hidden="true"></div>
+        <div class="solar-reflection" aria-hidden="true"></div>
+        <div class="hero-content">
+          <h1>Solut Enerji</h1>
+          <p class="hero-subtitle">Enerjinin Teknolojik Formu</p>
+          <div class="hero-actions">
+            <a class="solid-button large hero-primary" data-whatsapp-link target="_blank" rel="noreferrer" href="#">Ücretsiz Ön Keşif İste</a>
+            <a class="glass-button large" href="#hizmetler">Çözümleri İncele</a>
+          </div>
+        </div>
+        <div class="hero-panel" aria-label="Öne çıkan faydalar">
+          <span>Akıllı Enerji Tasarımı</span>
+          <span>Mühendislik Odaklı Keşif</span>
+          <span>Premium Kurulum Deneyimi</span>
+        </div>
+      </section>
+
+      <section class="services-section" id="hizmetler">
+        <div class="section-heading centered">
+          <p class="eyebrow">Hizmetler</p>
+          <h2>Enerji ihtiyacınızın olduğu her noktada.</h2>
+        </div>
+        <div class="service-showcase">
+          <article class="service-card">
+            <img src="/solut-site/assets/mesken-ges.jpg" alt="Modern ev çatısında mesken güneş enerjisi sistemi" />
+            <div>
+              <p class="service-type">Ongrid • Offgrid • Hibrit</p>
+              <h3>Mesken GES</h3>
+              <p>Faturanızı azaltırken evinize sessiz, temiz ve geleceğe hazır bir enerji konforu kazandırın.</p>
+              <a href="#iletisim">Evime uygun sistemi öğren</a>
+            </div>
+          </article>
+          <article class="service-card">
+            <img src="/solut-site/assets/tarimsal-sulama.jpg" alt="Güneş paneliyle çalışan tarımsal sulama pompası" />
+            <div>
+              <p class="service-type">Pompa • Arazi • Verim</p>
+              <h3>Tarımsal Sulama</h3>
+              <p>Güneşle çalışan pompa sistemleriyle üretim döneminde maliyeti hafifletin, arazinizde daha kontrollü bir enerji akışı kurun.</p>
+              <a href="#iletisim">Arazi keşfi iste</a>
+            </div>
+          </article>
+          <article class="service-card">
+            <img src="/solut-site/assets/urun-satis.jpg" alt="Hibrit inverter, batarya ve solar ekipmanların bulunduğu teknik alan" />
+            <div>
+              <p class="service-type">Panel • İnverter • Batarya</p>
+              <h3>Ürün Tedariği</h3>
+              <p>Doğru panel, inverter ve batarya seçimiyle sisteminize sadece ekipman değil, güven ve uzun ömür kazandırın.</p>
+              <a href="#iletisim">Tedariği planla</a>
+            </div>
+          </article>
+          <article class="service-card">
+            <img src="/solut-site/assets/ev-sarj.jpg" alt="Modern evde elektrikli araç şarj istasyonu kurulumu" />
+            <div>
+              <p class="service-type">AC Şarj • Kurulum • Kontrol</p>
+              <h3>Elektrikli Araç Şarj İstasyonu</h3>
+              <p>Eviniz veya işletmeniz için estetik, güvenli ve günlük rutininize kusursuz uyum sağlayan şarj altyapısı kurun.</p>
+              <a href="#iletisim">Şarj kurulumu sor</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="about-section" id="hakkimizda">
+        <div class="about-inner">
+          <div>
+            <p class="eyebrow">Hakkımızda</p>
+            <h2>Mühendislik aklıyla tasarlanan enerji deneyimi.</h2>
+          </div>
+          <div class="about-copy">
+            <p>Solut Enerji, Enerji Sistemleri Mühendisi tarafından kurulmuş, mühendislik odaklı bir enerji teknolojileri şirketidir. Güneş enerji sistemleri ve elektrikli araç şarj çözümlerinde; doğru projelendirme, premium ekipman ve yüksek uygulama standartlarını bir araya getiriyoruz. Her projede önceliğimiz, uzun ömürlü ve güvenilir enerji çözümleri sunmaktır.</p>
+            <div class="about-points" aria-label="Solut Enerji yaklaşımı">
+              <span>Doğru projelendirme</span>
+              <span>Premium ekipman</span>
+              <span>Yüksek uygulama standardı</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="calculator-section" id="hesapla">
+        <div class="calc-copy">
+          <p class="eyebrow">Ön değerlendirme</p>
+          <h2>Faturanıza göre ilk yönlendirmeyi görün.</h2>
+        </div>
+        <form class="calculator" data-calculator>
+          <label for="bill">Aylık elektrik faturası</label>
+          <div class="range-row">
+            <input id="bill" name="bill" type="range" min="1000" max="25000" step="500" value="4500" />
+            <output data-bill-output for="bill">4.500 TL</output>
+          </div>
+          <div class="calc-result">
+            <span data-system-output>Mesken GES için güçlü aday</span>
+            <strong data-note-output>Ongrid veya hibrit sistem değerlendirmeye değer.</strong>
+          </div>
+          <a class="solid-button" data-calculator-whatsapp target="_blank" rel="noreferrer" href="#">Bu değerle WhatsApp'tan sor</a>
+        </form>
+      </section>
+
+      <section class="engineering-section" id="muhendislik">
+        <div class="engineering-copy">
+          <p class="eyebrow">Mühendislik yaklaşımı</p>
+          <h2>Premium görünümün arkasında ölçüm, hesap ve doğru ekipman seçimi var.</h2>
+          <p>Solut Enerji, ilk görüşmeden itibaren tüketim profilinizi, kurulum alanını ve kullanım hedefinizi birlikte değerlendirir. Böylece sadece panel satışı değil, çalışan ve takip edilebilir bir enerji sistemi tasarlanır.</p>
+          <div class="process-list">
+            <span>Keşif</span>
+            <span>Analiz</span>
+            <span>Proje</span>
+            <span>Kurulum</span>
+            <span>Devreye alma</span>
+          </div>
+        </div>
+        <div class="spec-panel">
+          <h3>Sistem seçimi nasıl netleşir?</h3>
+          <dl>
+            <div>
+              <dt>Ongrid</dt>
+              <dd>Şebeke bağlantılı, fatura düşürme odaklı.</dd>
+            </div>
+            <div>
+              <dt>Offgrid</dt>
+              <dd>Şebekeden uzak alanlar için bağımsız enerji.</dd>
+            </div>
+            <div>
+              <dt>Hibrit</dt>
+              <dd>Depolama, yedek güç, enerji bağımsızlığı ve tasarrufu birlikte sunar.</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="contact-section" id="iletisim">
+        <div class="contact-inner">
+          <div>
+            <p class="eyebrow">İletişim</p>
+            <h2>Doğru sistemi birlikte netleştirelim.</h2>
+            <p>Çatı, arazi, ürün veya EV şarj ihtiyacınızı seçin; mesajınız WhatsApp'a hazır şekilde aktarılsın.</p>
+            <div class="contact-details">
+              <a href="mailto:iletisim@solutenerji.com">iletisim@solutenerji.com</a>
+              <span>Umurbey Mah. Şehitler Cad. No:10C Konak/İzmir</span>
+            </div>
+          </div>
+          <form class="lead-form" data-lead-form>
+            <div class="form-row">
+              <input name="name" type="text" placeholder="Ad Soyad" autocomplete="name" required />
+              <select name="topic" required>
+                <option value="" selected disabled>Hizmet seçin</option>
+                <option>Mesken GES</option>
+                <option>Tarımsal Sulama</option>
+                <option>Ürün Tedariği</option>
+                <option>Elektrikli Araç Şarj İstasyonu</option>
+              </select>
+            </div>
+            <textarea name="message" rows="3" placeholder="Kısaca ihtiyacınızı yazın"></textarea>
+            <div class="form-actions">
+              <button class="solid-button large" type="submit">WhatsApp'a gönder</button>
+              <a class="ghost-button large" data-call-link href="#">Hemen ara</a>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <a class="floating-whatsapp" data-whatsapp-link target="_blank" rel="noreferrer" href="#" aria-label="WhatsApp ile iletişime geç">
+      WhatsApp
+    </a>
+
+    <script src="/solut-site/script.js"></script>
+  </body>
+</html>
